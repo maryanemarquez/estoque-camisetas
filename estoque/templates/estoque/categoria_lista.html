@@ -1,36 +1,27 @@
 {% extends 'base.html' %}
 {% comment %}
-categoria_lista.html — lista de categorias com o número de camisetas de cada uma.
+categoria_lista.html — categorias em grade de cartões (Etapa 6),
+com o número de camisetas de cada uma.
 {% endcomment %}
 
 {% block titulo %}{{ block.super }} - Categorias{% endblock %}
 
 {% block conteudo %}
 <h1>Categorias</h1>
+<p class="subtitulo">{{ categorias|length }} categoria{{ categorias|length|pluralize }}</p>
 
 <a href="{% url 'criar_categoria' %}" class="botao">+ Nova categoria</a>
 
-<table>
-    <thead>
-        <tr>
-            <th>Nome</th>
-            <th>Camisetas</th>
-            <th>Ações</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for categoria in categorias %}
-            <tr>
-                <td><a href="{% url 'detalhar_categoria' categoria.pk %}">{{ categoria.nome }}</a></td>
-                <td>{{ categoria.itens.count }}</td>
-                <td>
-                    <a href="{% url 'editar_categoria' categoria.pk %}">Editar</a> |
-                    <a href="{% url 'excluir_categoria' categoria.pk %}">Excluir</a>
-                </td>
-            </tr>
-        {% empty %}
-            <tr><td colspan="3" class="vazio">Nenhuma categoria cadastrada.</td></tr>
-        {% endfor %}
-    </tbody>
-</table>
+<div class="grade-categorias">
+    {% for categoria in categorias %}
+        <div class="cartao-categoria">
+            <h2><a href="{% url 'detalhar_categoria' categoria.pk %}">{{ categoria.nome }}</a></h2>
+            <p>{{ categoria.itens.count }} camiseta{{ categoria.itens.count|pluralize }}</p>
+            <a href="{% url 'editar_categoria' categoria.pk %}">Editar</a> |
+            <a href="{% url 'excluir_categoria' categoria.pk %}">Excluir</a>
+        </div>
+    {% empty %}
+        <p class="vazio">Nenhuma categoria cadastrada.</p>
+    {% endfor %}
+</div>
 {% endblock %}
