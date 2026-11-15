@@ -1,0 +1,33 @@
+{% comment %}
+==============================================================
+templates/base.html
+Papel: layout base do site. Todas as páginas herdam deste arquivo
+com {% extends 'base.html' %} e preenchem os blocos 'titulo' e 'conteudo'.
+Os links de Categorias, Movimentações e Início entram nas Etapas 3 e 4
+({% url %} de rota inexistente gera NoReverseMatch).
+==============================================================
+{% endcomment %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block titulo %}Estoque de Camisetas{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'estoque/estilo.css' %}">
+</head>
+<body>
+    <nav>
+        <a href="{% url 'lista_itens' %}">Camisetas</a>
+        <a href="{% url 'criar_item' %}">Nova camiseta</a>
+    </nav>
+
+    <main>
+        {% block conteudo %}{% endblock %}
+    </main>
+
+    <footer>
+        <p>Estoque de Camisetas &middot; Projeto Django</p>
+    </footer>
+</body>
+</html>
