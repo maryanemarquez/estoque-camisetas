@@ -51,6 +51,11 @@ class Item(models.Model):
                 total -= mov.quantidade
         return total
 
+    @property
+    def estoque_baixo(self):
+        """True quando o saldo é menor ou igual ao estoque mínimo (D18)."""
+        return self.saldo <= self.estoque_minimo
+
 
 class Movimentacao(models.Model):
     """Registro de entrada ou saída de um item."""
