@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% comment %}
-item_lista.html — lista de camisetas com busca por nome ou código.
+item_lista.html — lista de camisetas com busca por nome/código e filtros de categoria e alerta.
 Cada linha vem do parcial _item_linha.html.
 {% endcomment %}
 
@@ -11,8 +11,17 @@ Cada linha vem do parcial _item_linha.html.
 
 <form method="get" class="busca">
     <input type="text" name="q" value="{{ busca|default:'' }}" placeholder="Buscar por nome ou código">
-    <button type="submit">Buscar</button>
-    {% if busca %}<a href="{% url 'lista_itens' %}">Limpar</a>{% endif %}
+    <select name="categoria">
+        <option value="">Todas as categorias</option>
+        {% for c in categorias %}
+            <option value="{{ c.pk }}" {% if c.pk|stringformat:'s' == categoria %}selected{% endif %}>{{ c.nome }}</option>
+        {% endfor %}
+    </select>
+    <label class="inline">
+        <input type="checkbox" name="alerta" value="1" {% if alerta %}checked{% endif %}> Somente em alerta
+    </label>
+    <button type="submit">Filtrar</button>
+    {% if busca or categoria or alerta %}<a href="{% url 'lista_itens' %}">Limpar</a>{% endif %}
 </form>
 
 <a href="{% url 'criar_item' %}" class="botao">+ Nova camiseta</a>
