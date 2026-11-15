@@ -3,8 +3,7 @@
 templates/base.html
 Papel: layout base do site. Todas as páginas herdam deste arquivo
 com {% extends 'base.html' %} e preenchem os blocos 'titulo' e 'conteudo'.
-Os links de Categorias, Movimentações e Início entram nas Etapas 3 e 4
-({% url %} de rota inexistente gera NoReverseMatch).
+O link de Início entra na Etapa 4 (dashboard).
 ==============================================================
 {% endcomment %}
 {% load static %}
@@ -19,6 +18,8 @@ Os links de Categorias, Movimentações e Início entram nas Etapas 3 e 4
 <body>
     <nav>
         <a href="{% url 'lista_itens' %}">Camisetas</a>
+        <a href="{% url 'lista_categorias' %}">Categorias</a>
+        <a href="{% url 'lista_movimentacoes' %}">Movimentações</a>
         <a href="{% url 'criar_item' %}">Nova camiseta</a>
     </nav>
 

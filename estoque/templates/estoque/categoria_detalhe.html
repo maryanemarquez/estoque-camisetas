@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% comment %}
+categoria_detalhe.html — nome da categoria e lista das camisetas dela.
+{% endcomment %}
+
+{% block titulo %}{{ block.super }} - {{ categoria.nome }}{% endblock %}
+
+{% block conteudo %}
+<h1>{{ categoria.nome }}</h1>
+
+<h2>Camisetas desta categoria</h2>
+<table>
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Código</th>
+            <th>Saldo</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for item in categoria.itens.all %}
+            <tr>
+                <td><a href="{% url 'detalhar_item' item.pk %}">{{ item.nome }}</a></td>
+                <td>{{ item.codigo }}</td>
+                <td>{{ item.saldo }}</td>
+                <td><span class="status {% if item.ativo %}ok{% endif %}">{{ item.ativo|yesno:"Ativo,Inativo" }}</span></td>
+            </tr>
+        {% empty %}
+            <tr><td colspan="4" class="vazio">Nenhuma camiseta nesta categoria.</td></tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<div class="acoes">
+    <a href="{% url 'editar_categoria' categoria.pk %}" class="botao">Editar</a>
+    <a href="{% url 'excluir_categoria' categoria.pk %}" class="botao perigo">Excluir</a>
+    <a href="{% url 'lista_categorias' %}" class="botao secundario">Voltar</a>
+</div>
+{% endblock %}

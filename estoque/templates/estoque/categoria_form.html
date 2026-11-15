@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% comment %}
+categoria_form.html — formulário compartilhado por criar e editar categoria.
+Se a view enviou 'categoria', é edição; senão, é criação.
+{% endcomment %}
+
+{% block titulo %}{{ block.super }} - {% if categoria %}Editar categoria{% else %}Nova categoria{% endif %}{% endblock %}
+
+{% block conteudo %}
+<h1>{% if categoria %}Editar categoria{% else %}Nova categoria{% endif %}</h1>
+
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Salvar</button>
+    <a href="{% url 'lista_categorias' %}" class="botao secundario">Cancelar</a>
+</form>
+{% endblock %}

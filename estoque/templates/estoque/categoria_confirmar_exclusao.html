@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% comment %}
+categoria_confirmar_exclusao.html — confirmação antes de apagar.
+Só o POST apaga. Avisa do efeito CASCADE (D1): camisetas e movimentações vão junto.
+{% endcomment %}
+
+{% block titulo %}{{ block.super }} - Excluir categoria{% endblock %}
+
+{% block conteudo %}
+<h1>Excluir categoria</h1>
+
+<p>Deseja realmente excluir a categoria <strong>{{ categoria.nome }}</strong>?</p>
+
+<p class="aviso">
+    Serão apagadas {{ categoria.itens.count }} camiseta{{ categoria.itens.count|pluralize }}
+    desta categoria e todas as suas movimentações. Esta ação não pode ser desfeita.
+</p>
+
+<form method="post">
+    {% csrf_token %}
+    <button type="submit" class="perigo">Sim, excluir</button>
+    <a href="{% url 'detalhar_categoria' categoria.pk %}" class="botao secundario">Cancelar</a>
+</form>
+{% endblock %}

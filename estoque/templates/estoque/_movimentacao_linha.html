@@ -1,0 +1,15 @@
+{% comment %}
+_movimentacao_linha.html — parcial: uma linha da tabela de movimentações.
+Incluído dentro de um for (usa a variável 'mov').
+Com mostrar_item=True, exibe também a coluna da camiseta
+(na lista geral; no detalhe do item ela seria redundante).
+{% endcomment %}
+<tr>
+    <td><a href="{% url 'detalhar_movimentacao' mov.pk %}">{{ mov.data|date:"d/m/Y H:i" }}</a></td>
+    {% if mostrar_item %}
+        <td><a href="{% url 'detalhar_item' mov.item.pk %}">{{ mov.item.nome }}</a></td>
+    {% endif %}
+    <td>{{ mov.get_tipo_display }}</td>
+    <td>{{ mov.quantidade }}</td>
+    <td>{{ mov.observacao|default:"-" }}</td>
+</tr>

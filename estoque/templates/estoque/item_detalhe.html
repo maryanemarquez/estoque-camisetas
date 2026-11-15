@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% comment %}
 item_detalhe.html — dados completos de uma camiseta, saldo em destaque
-e histórico de movimentações.
+e histórico de movimentações (linhas pelo parcial _movimentacao_linha.html).
 {% endcomment %}
 
 {% block titulo %}{{ block.super }} - {{ item.nome }}{% endblock %}
@@ -23,10 +23,14 @@ e histórico de movimentações.
 </dl>
 
 <h2>Movimentações</h2>
+{% if item.ativo %}
+    <a href="{% url 'criar_movimentacao' %}?item={{ item.pk }}" class="botao">Registrar movimentação</a>
+{% else %}
+    <p class="vazio">Camiseta inativa: não recebe novas movimentações.</p>
+{% endif %}
 <table>
     <thead>
         <tr>
-            <th>#</th>
             <th>Data</th>
             <th>Tipo</th>
             <th>Quantidade</th>
@@ -34,16 +38,10 @@ e histórico de movimentações.
         </tr>
     </thead>
     <tbody>
-        {% for mov in item.movimentacoes.all %}
-            <tr>
-                <td>{{ forloop.counter }}</td>
-                <td>{{ mov.data|date:"d/m/Y H:i" }}</td>
-                <td>{{ mov.get_tipo_display }}</td>
-                <td>{{ mov.quantidade }}</td>
-                <td>{{ mov.observacao|default:"-" }}</td>
-            </tr>
+        {% for mov in movimentacoes %}
+            {% include 'estoque/_movimentacao_linha.html' %}
         {% empty %}
-            <tr><td colspan="5" class="vazio">Nenhuma movimentação registrada.</td></tr>
+            <tr><td colspan="4" class="vazio">Nenhuma movimentação registrada.</td></tr>
         {% endfor %}
     </tbody>
 </table>

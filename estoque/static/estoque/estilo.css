@@ -181,3 +181,11 @@ dd {
     color: #777;
     font-style: italic;
 }
+
+/* Etapa 3: aviso de exclusão (CASCADE) */
+.aviso {
+    background: #fef3c7;
+    color: #92400e;
+    padding: 10px 14px;
+    border-radius: 4px;
+}
