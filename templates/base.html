@@ -3,6 +3,9 @@
 templates/base.html
 Papel: layout base do site. Todas as páginas herdam deste arquivo
 com {% extends 'base.html' %} e preenchem os blocos 'titulo' e 'conteudo'.
+Etapa 6: o link da página atual recebe class="ativo" (destaque no menu).
+O destaque usa request.path; o objeto 'request' já está disponível
+nos templates pelo context processor configurado em settings.py.
 ==============================================================
 {% endcomment %}
 {% load static %}
@@ -16,11 +19,12 @@ com {% extends 'base.html' %} e preenchem os blocos 'titulo' e 'conteudo'.
 </head>
 <body>
     <nav>
-        <a href="{% url 'inicio' %}">Início</a>
-        <a href="{% url 'lista_itens' %}">Camisetas</a>
-        <a href="{% url 'lista_categorias' %}">Categorias</a>
-        <a href="{% url 'lista_movimentacoes' %}">Movimentações</a>
-        <a href="{% url 'criar_item' %}">Nova camiseta</a>
+        <a href="{% url 'inicio' %}" {% if request.path == '/' %}class="ativo"{% endif %}>Início</a>
+        {# /itens/novo/ tem o seu próprio destaque, então sai do "Camisetas" #}
+        <a href="{% url 'lista_itens' %}" {% if '/itens/' in request.path and request.path != '/itens/novo/' %}class="ativo"{% endif %}>Camisetas</a>
+        <a href="{% url 'lista_categorias' %}" {% if '/categorias/' in request.path %}class="ativo"{% endif %}>Categorias</a>
+        <a href="{% url 'lista_movimentacoes' %}" {% if '/movimentacoes/' in request.path %}class="ativo"{% endif %}>Movimentações</a>
+        <a href="{% url 'criar_item' %}" {% if request.path == '/itens/novo/' %}class="ativo"{% endif %}>Nova camiseta</a>
     </nav>
 
     <main>
