@@ -8,6 +8,7 @@ Cada linha vem do parcial _movimentacao_linha.html.
 
 {% block conteudo %}
 <h1>Movimentações</h1>
+<p class="subtitulo">{{ movimentacoes|length }} registro{{ movimentacoes|length|pluralize }}</p>
 
 <a href="{% url 'criar_movimentacao' %}" class="botao">+ Nova movimentação</a>
 
