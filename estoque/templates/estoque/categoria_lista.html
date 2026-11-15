@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% comment %}
+categoria_lista.html — lista de categorias com o número de camisetas de cada uma.
+{% endcomment %}
+
+{% block titulo %}{{ block.super }} - Categorias{% endblock %}
+
+{% block conteudo %}
+<h1>Categorias</h1>
+
+<a href="{% url 'criar_categoria' %}" class="botao">+ Nova categoria</a>
+
+<table>
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Camisetas</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for categoria in categorias %}
+            <tr>
+                <td><a href="{% url 'detalhar_categoria' categoria.pk %}">{{ categoria.nome }}</a></td>
+                <td>{{ categoria.itens.count }}</td>
+                <td>
+                    <a href="{% url 'editar_categoria' categoria.pk %}">Editar</a> |
+                    <a href="{% url 'excluir_categoria' categoria.pk %}">Excluir</a>
+                </td>
+            </tr>
+        {% empty %}
+            <tr><td colspan="3" class="vazio">Nenhuma categoria cadastrada.</td></tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
