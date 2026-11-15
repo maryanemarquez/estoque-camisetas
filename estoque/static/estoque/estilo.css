@@ -1,0 +1,183 @@
+/* ==============================================================
+   estoque/static/estoque/estilo.css
+   Papel: estilo próprio e simples do projeto (sem Bootstrap).
+   ============================================================== */
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    background: #f4f4f6;
+    color: #222;
+}
+
+/* Menu superior */
+nav {
+    background: #1f2937;
+    padding: 12px 24px;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    margin-right: 20px;
+    font-weight: bold;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+main {
+    max-width: 960px;
+    margin: 24px auto;
+    padding: 0 16px;
+}
+
+footer {
+    text-align: center;
+    color: #777;
+    font-size: 0.85em;
+    padding: 24px 0;
+}
+
+/* Botões: <button> e links com class="botao" */
+button,
+.botao {
+    display: inline-block;
+    background: #2563eb;
+    color: #fff;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 0.95em;
+    cursor: pointer;
+}
+
+button:hover,
+.botao:hover {
+    background: #1d4ed8;
+}
+
+.perigo,
+button.perigo {
+    background: #dc2626;
+}
+
+.perigo:hover,
+button.perigo:hover {
+    background: #b91c1c;
+}
+
+.secundario {
+    background: #6b7280;
+}
+
+.secundario:hover {
+    background: #4b5563;
+}
+
+/* Formulários */
+form p {
+    margin: 12px 0;
+}
+
+form label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 4px;
+}
+
+input[type="text"],
+input[type="number"],
+select {
+    padding: 6px;
+    width: 100%;
+    max-width: 360px;
+    box-sizing: border-box;
+}
+
+.errorlist {
+    color: #b91c1c;
+    list-style: none;
+    padding: 0;
+    margin: 4px 0;
+    font-size: 0.9em;
+}
+
+/* Busca */
+.busca {
+    margin: 16px 0;
+}
+
+.busca input[type="text"] {
+    width: 260px;
+}
+
+/* Tabela */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+    margin: 16px 0;
+}
+
+th,
+td {
+    padding: 8px 10px;
+    border-bottom: 1px solid #e5e7eb;
+    text-align: left;
+}
+
+th {
+    background: #e5e7eb;
+}
+
+td a {
+    color: #2563eb;
+}
+
+/* Status e saldo */
+.status {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 10px;
+    background: #fee2e2;
+    color: #991b1b;
+    font-size: 0.85em;
+}
+
+.status.ok {
+    background: #dcfce7;
+    color: #166534;
+}
+
+.saldo {
+    font-size: 1.6em;
+    font-weight: bold;
+}
+
+/* Detalhe */
+dl {
+    background: #fff;
+    padding: 12px 16px;
+    border-radius: 4px;
+}
+
+dt {
+    font-weight: bold;
+    margin-top: 8px;
+}
+
+dd {
+    margin: 2px 0 0 0;
+}
+
+.acoes {
+    margin: 16px 0;
+}
+
+.vazio {
+    color: #777;
+    font-style: italic;
+}
