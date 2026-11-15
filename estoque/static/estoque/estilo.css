@@ -189,3 +189,53 @@ dd {
     padding: 10px 14px;
     border-radius: 4px;
 }
+
+/* Etapa 4: alerta de estoque baixo */
+.alerta {
+    background: #fee2e2;
+    color: #991b1b;
+    padding: 10px 14px;
+    border-radius: 4px;
+    font-weight: bold;
+}
+
+.alerta-selo {
+    display: inline-block;
+    margin-left: 6px;
+    padding: 2px 8px;
+    border-radius: 10px;
+    background: #fee2e2;
+    color: #991b1b;
+    font-size: 0.8em;
+}
+
+/* Etapa 4: filtros da lista */
+form label.inline {
+    display: inline;
+    font-weight: normal;
+    margin: 0 8px;
+}
+
+/* Etapa 4: dashboard da página inicial */
+.painel {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin: 16px 0;
+}
+
+.cartao {
+    flex: 1;
+    min-width: 160px;
+    background: #fff;
+    padding: 16px;
+    border-radius: 4px;
+    text-align: center;
+}
+
+.cartao .numero {
+    display: block;
+    font-size: 2em;
+    font-weight: bold;
+    color: #2563eb;
+}

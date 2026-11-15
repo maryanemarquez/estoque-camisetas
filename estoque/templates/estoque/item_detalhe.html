@@ -9,6 +9,10 @@ e histórico de movimentações (linhas pelo parcial _movimentacao_linha.html).
 {% block conteudo %}
 <h1>{{ item.nome }}</h1>
 
+{% if item.estoque_baixo %}
+    <p class="alerta">Estoque baixo: saldo {{ item.saldo }} (mínimo {{ item.estoque_minimo }}).</p>
+{% endif %}
+
 <p>Saldo em estoque: <span class="saldo">{{ item.saldo }}</span></p>
 
 <dl>
