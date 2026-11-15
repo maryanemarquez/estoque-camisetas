@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% comment %}
+item_lista.html — lista de camisetas com busca por nome ou código.
+Cada linha vem do parcial _item_linha.html.
+{% endcomment %}
+
+{% block titulo %}{{ block.super }} - Camisetas{% endblock %}
+
+{% block conteudo %}
+<h1>Camisetas</h1>
+
+<form method="get" class="busca">
+    <input type="text" name="q" value="{{ busca|default:'' }}" placeholder="Buscar por nome ou código">
+    <button type="submit">Buscar</button>
+    {% if busca %}<a href="{% url 'lista_itens' %}">Limpar</a>{% endif %}
+</form>
+
+<a href="{% url 'criar_item' %}" class="botao">+ Nova camiseta</a>
+
+<table>
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Código</th>
+            <th>Categoria</th>
+            <th>Tamanho</th>
+            <th>Cor</th>
+            <th>Preço</th>
+            <th>Saldo</th>
+            <th>Status</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for item in itens %}
+            {% include 'estoque/_item_linha.html' %}
+        {% empty %}
+            <tr><td colspan="9" class="vazio">Nenhuma camiseta encontrada.</td></tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<p>{{ itens|length }} camiseta{{ itens|length|pluralize }} encontrada{{ itens|length|pluralize }}.</p>
+{% endblock %}

@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% comment %}
+item_detalhe.html — dados completos de uma camiseta, saldo em destaque
+e histórico de movimentações.
+{% endcomment %}
+
+{% block titulo %}{{ block.super }} - {{ item.nome }}{% endblock %}
+
+{% block conteudo %}
+<h1>{{ item.nome }}</h1>
+
+<p>Saldo em estoque: <span class="saldo">{{ item.saldo }}</span></p>
+
+<dl>
+    <dt>Código</dt><dd>{{ item.codigo }}</dd>
+    <dt>Categoria</dt><dd>{{ item.categoria.nome }}</dd>
+    <dt>Tamanho</dt><dd>{{ item.tamanho|default:"-" }}</dd>
+    <dt>Cor</dt><dd>{{ item.cor|default:"-" }}</dd>
+    <dt>Preço</dt><dd>R$ {{ item.preco }}</dd>
+    <dt>Estoque mínimo</dt><dd>{{ item.estoque_minimo }}</dd>
+    <dt>Status</dt>
+    <dd><span class="status {% if item.ativo %}ok{% endif %}">{{ item.ativo|yesno:"Ativo,Inativo" }}</span></dd>
+</dl>
+
+<h2>Movimentações</h2>
+<table>
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Data</th>
+            <th>Tipo</th>
+            <th>Quantidade</th>
+            <th>Observação</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for mov in item.movimentacoes.all %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ mov.data|date:"d/m/Y H:i" }}</td>
+                <td>{{ mov.get_tipo_display }}</td>
+                <td>{{ mov.quantidade }}</td>
+                <td>{{ mov.observacao|default:"-" }}</td>
+            </tr>
+        {% empty %}
+            <tr><td colspan="5" class="vazio">Nenhuma movimentação registrada.</td></tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<div class="acoes">
+    <a href="{% url 'editar_item' item.pk %}" class="botao">Editar</a>
+    <a href="{% url 'excluir_item' item.pk %}" class="botao perigo">Excluir</a>
+    <a href="{% url 'lista_itens' %}" class="botao secundario">Voltar</a>
+</div>
+{% endblock %}
