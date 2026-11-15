@@ -3,6 +3,7 @@
 # Papel: lógica das telas (views em função).
 # Etapa 2: CRUD de Item. Etapa 3: CRUD de Categoria e Movimentação
 # (esta última sem editar/excluir: o histórico não é alterado).
+# Etapa 4: dashboard na página inicial e filtros na lista de itens.
 # Conceito novo: Q (importado de django.db.models) permite combinar
 # condições com "ou" no filter(). Aqui, a busca acha o texto no
 # nome OU no código da camiseta.
@@ -15,20 +16,50 @@ from .models import Categoria, Item, Movimentacao
 
 
 def inicio(request):
-    """Página inicial: por enquanto redireciona para a lista (dashboard na Etapa 4)."""
-    return redirect('lista_itens')
+    """Página inicial: totais, camisetas em alerta e últimas movimentações."""
+    # Só itens ativos entram no alerta; o saldo é calculado em Python (D17)
+    itens_em_alerta = []
+    for item in Item.objects.filter(ativo=True).order_by('nome'):
+        if item.estoque_baixo:
+            itens_em_alerta.append(item)
+    contexto = {
+        'total_itens': Item.objects.count(),
+        'total_categorias': Categoria.objects.count(),
+        'total_movimentacoes': Movimentacao.objects.count(),
+        'itens_em_alerta': itens_em_alerta,
+        'ultimas': Movimentacao.objects.order_by('-data')[:5],
+    }
+    return render(request, 'estoque/inicio.html', contexto)
 
 
 # ----------------------------- Item -----------------------------
 
 def lista_itens(request):
-    """Lista as camisetas, com busca opcional por nome ou código."""
+    """Lista as camisetas, com busca por nome/código e filtros de categoria e alerta."""
     itens = Item.objects.all().order_by('nome')
     busca = request.GET.get('q')
     if busca:
         # icontains ignora maiúsculas/minúsculas; Q liga as duas condições com "ou"
         itens = itens.filter(Q(nome__icontains=busca) | Q(codigo__icontains=busca))
-    contexto = {'itens': itens, 'busca': busca}
+    categoria = request.GET.get('categoria')
+    if categoria:
+        itens = itens.filter(categoria_id=categoria)
+    alerta = request.GET.get('alerta')
+    if alerta:
+        # Por último: estoque_baixo é propriedade (não existe no banco),
+        # então o resultado passa a ser uma lista Python, não um queryset
+        itens_em_alerta = []
+        for item in itens:
+            if item.estoque_baixo:
+                itens_em_alerta.append(item)
+        itens = itens_em_alerta
+    contexto = {
+        'itens': itens,
+        'busca': busca,
+        'categorias': Categoria.objects.all().order_by('nome'),
+        'categoria': categoria or '',
+        'alerta': alerta,
+    }
     return render(request, 'estoque/item_lista.html', contexto)
 
 

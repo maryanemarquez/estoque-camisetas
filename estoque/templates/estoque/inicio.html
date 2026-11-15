@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% comment %}
+inicio.html — dashboard: totais, camisetas em alerta e últimas movimentações.
+{% endcomment %}
+
+{% block titulo %}{{ block.super }} - Início{% endblock %}
+
+{% block conteudo %}
+<h1>Início</h1>
+
+<div class="painel">
+    <div class="cartao"><span class="numero">{{ total_itens }}</span> Camiseta{{ total_itens|pluralize }}</div>
+    <div class="cartao"><span class="numero">{{ total_categorias }}</span> Categoria{{ total_categorias|pluralize }}</div>
+    <div class="cartao"><span class="numero">{{ total_movimentacoes }}</span> Movimentaç{{ total_movimentacoes|pluralize:"ão,ões" }}</div>
+</div>
+
+<h2>Em alerta de estoque</h2>
+<table>
+    <thead>
+        <tr><th>Camiseta</th><th>Saldo</th><th>Mínimo</th></tr>
+    </thead>
+    <tbody>
+        {% for item in itens_em_alerta %}
+            <tr>
+                <td><a href="{% url 'detalhar_item' item.pk %}">{{ item.nome }}</a></td>
+                <td>{{ item.saldo }}</td>
+                <td>{{ item.estoque_minimo }}</td>
+            </tr>
+        {% empty %}
+            <tr><td colspan="3" class="vazio">Nenhuma camiseta em alerta.</td></tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<h2>Últimas movimentações</h2>
+<table>
+    <thead>
+        <tr><th>Data</th><th>Camiseta</th><th>Tipo</th><th>Quantidade</th><th>Observação</th></tr>
+    </thead>
+    <tbody>
+        {% for mov in ultimas %}
+            {% include 'estoque/_movimentacao_linha.html' with mostrar_item=True %}
+        {% empty %}
+            <tr><td colspan="5" class="vazio">Nenhuma movimentação registrada.</td></tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<div class="acoes">
+    <a href="{% url 'lista_itens' %}" class="botao">Ver camisetas</a>
+    <a href="{% url 'criar_movimentacao' %}" class="botao">Registrar movimentação</a>
+    <a href="{% url 'lista_movimentacoes' %}" class="botao secundario">Todas as movimentações</a>
+</div>
+{% endblock %}
