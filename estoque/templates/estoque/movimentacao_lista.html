@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% comment %}
+movimentacao_lista.html — histórico geral de movimentações.
+Cada linha vem do parcial _movimentacao_linha.html.
+{% endcomment %}
+
+{% block titulo %}{{ block.super }} - Movimentações{% endblock %}
+
+{% block conteudo %}
+<h1>Movimentações</h1>
+
+<a href="{% url 'criar_movimentacao' %}" class="botao">+ Nova movimentação</a>
+
+<table>
+    <thead>
+        <tr>
+            <th>Data</th>
+            <th>Camiseta</th>
+            <th>Tipo</th>
+            <th>Quantidade</th>
+            <th>Observação</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for mov in movimentacoes %}
+            {% include 'estoque/_movimentacao_linha.html' with mostrar_item=True %}
+        {% empty %}
+            <tr><td colspan="5" class="vazio">Nenhuma movimentação registrada.</td></tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
