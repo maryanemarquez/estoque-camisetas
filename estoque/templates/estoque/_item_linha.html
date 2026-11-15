@@ -9,7 +9,10 @@ Incluído por item_lista.html dentro do for (usa a variável 'item').
     <td>{{ item.tamanho|default:"-" }}</td>
     <td>{{ item.cor|default:"-" }}</td>
     <td>R$ {{ item.preco }}</td>
-    <td>{{ item.saldo }}</td>
+    <td>
+        {{ item.saldo }}
+        {% if item.estoque_baixo %}<span class="alerta-selo">Estoque baixo</span>{% endif %}
+    </td>
     <td>
         <span class="status {% if item.ativo %}ok{% endif %}">{{ item.ativo|yesno:"Ativo,Inativo" }}</span>
     </td>
