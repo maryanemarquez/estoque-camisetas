@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% comment %}
+item_form.html — formulário compartilhado por criar e editar.
+A variável 'item' só existe na edição; é ela que muda o título.
+{% endcomment %}
+
+{% block titulo %}{{ block.super }} - {% if item %}Editar{% else %}Nova{% endif %} camiseta{% endblock %}
+
+{% block conteudo %}
+<h1>{% if item %}Editar camiseta{% else %}Nova camiseta{% endif %}</h1>
+
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Salvar</button>
+    <a href="{% url 'lista_itens' %}" class="botao secundario">Cancelar</a>
+</form>
+{% endblock %}

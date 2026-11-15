@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% comment %}
+item_confirmar_exclusao.html — tela de confirmação. O GET só mostra
+esta página; a exclusão acontece apenas no POST do formulário.
+{% endcomment %}
+
+{% block titulo %}{{ block.super }} - Excluir camiseta{% endblock %}
+
+{% block conteudo %}
+<h1>Excluir camiseta</h1>
+
+<p>Tem certeza que deseja excluir <strong>{{ item.nome }}</strong> ({{ item.codigo }})?</p>
+<p>Atenção: as movimentações desta camiseta também serão apagadas.</p>
+
+<form method="post">
+    {% csrf_token %}
+    <button type="submit" class="perigo">Sim, excluir</button>
+    <a href="{% url 'detalhar_item' item.pk %}" class="botao secundario">Cancelar</a>
+</form>
+{% endblock %}
