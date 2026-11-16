@@ -4,7 +4,8 @@
 # Etapa 2: CRUD de Item. Etapa 3: CRUD de Categoria e Movimentação
 # (esta última sem editar/excluir: o histórico não é alterado).
 # Etapa 4: dashboard na página inicial e filtros na lista de itens.
-# Etapa 7: ordenação da lista de itens por código e preço.
+# Etapa 7: ordenação da lista de itens por código e preço e busca da
+# camiseta na movimentação (o form converte o texto em Item).
 # Conceito novo: Q (importado de django.db.models) permite combinar
 # condições com "ou" no filter(). Aqui, a busca acha o texto no
 # nome OU no código da camiseta.
@@ -197,7 +198,13 @@ def criar_movimentacao(request):
             # Vai para o item para mostrar o saldo já atualizado
             return redirect('detalhar_item', pk=movimentacao.item.pk)
     else:
-        # ?item=<pk> (atalho do detalhe do item) já deixa a camiseta escolhida
-        form = MovimentacaoForm(initial={'item': request.GET.get('item')})
+        # ?item=<pk> (atalho do detalhe do item) já deixa o código no campo de busca
+        inicial = {}
+        item_pk = request.GET.get('item', '')
+        if item_pk.isdigit():
+            item = Item.objects.filter(pk=item_pk).first()
+            if item:
+                inicial['busca_item'] = item.codigo
+        form = MovimentacaoForm(initial=inicial)
     contexto = {'form': form}
     return render(request, 'estoque/movimentacao_form.html', contexto)

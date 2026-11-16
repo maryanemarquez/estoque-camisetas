@@ -23,6 +23,7 @@ Projeto acadêmico da disciplina de Desenvolvimento Web com Python e Django.
 - Movimentações de estoque (entrada e saída): criar, listar e detalhar; histórico imutável
 - Saída maior que o saldo é bloqueada com mensagem de erro
 - Camiseta inativa não recebe movimentação
+- Na movimentação, a camiseta é escolhida por um campo de busca (nome ou código, igual à tela de camisetas); se a busca achar mais de uma, o sistema pede o código ou mais letras do nome
 - Saldo calculado a partir das movimentações; alerta quando saldo ≤ estoque mínimo
 - Página inicial com totais, camisetas em alerta e últimas movimentações
 - Painel Admin com colunas e busca personalizadas
@@ -53,7 +54,7 @@ Use em banco novo; para recomeçar, apague o arquivo `db.sqlite3` e repita `migr
 python manage.py test
 ```
 
-Executa 19 testes automatizados (saldo, estoque baixo, validação da movimentação, código automático, prefixo da categoria, ordenação e views).
+Executa 24 testes automatizados (saldo, estoque baixo, validação e busca da movimentação, código automático, prefixo da categoria, ordenação e views).
 
 ## Estrutura
 
@@ -111,15 +112,3 @@ A lista de camisetas aceita `?ordem=` com `nome`, `codigo`, `-codigo`, `preco` o
 | Administração pelo Admin | 3 models registrados e personalizados |
 | Templates: listar, detalhar, editar, criar | `*_lista`, `*_detalhe`, `*_form` |
 | GitHub | Este repositório |
-
-## Fluxo Git
-
-Uma branch por etapa, mesclada em `main` com `--no-ff`, commits em Conventional Commits e tags `etapa-1` a `etapa-5` e `v1.0`.
-
-| Etapa | Branch |
-|---|---|
-| 1 Fundação | `etapa-1-fundacao` |
-| 2 CRUD de Item | `etapa-2-crud-item` |
-| 3 Categoria e Movimentação | `etapa-3-categoria-movimentacao` |
-| 4 Regras de estoque | `etapa-4-regras-estoque` |
-| 5 Acabamento | `etapa-5-acabamento` |

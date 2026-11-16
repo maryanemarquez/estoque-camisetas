@@ -48,25 +48,46 @@ class ModelTests(BaseTestCase):
 
 class FormTests(BaseTestCase):
 
+    def dados(self, item, tipo='S', quantidade=1):
+        # A camiseta é enviada como texto de busca (código), não como id
+        return {'busca_item': item.codigo, 'tipo': tipo, 'quantidade': quantidade}
+
     def test_form_rejeita_saida_maior_que_o_saldo(self):
         item = self.criar_item()
         self.mover(item, 'E', 4)
-        form = MovimentacaoForm({'item': item.pk, 'tipo': 'S', 'quantidade': 5})
+        form = MovimentacaoForm(self.dados(item, 'S', 5))
         self.assertFalse(form.is_valid())
         self.assertIn('quantidade', form.errors)
 
     def test_form_aceita_saida_dentro_do_saldo(self):
         item = self.criar_item()
         self.mover(item, 'E', 4)
-        form = MovimentacaoForm({'item': item.pk, 'tipo': 'S', 'quantidade': 4})
+        form = MovimentacaoForm(self.dados(item, 'S', 4))
+        self.assertTrue(form.is_valid())
+        self.assertEqual(form.save().item, item)
+
+    def test_busca_por_nome_acha_a_camiseta(self):
+        item = Item.objects.create(nome='Camiseta Lunar', categoria=self.categoria, preco='99.90')
+        form = MovimentacaoForm({'busca_item': 'lunar', 'tipo': 'E', 'quantidade': 2})
+        self.assertTrue(form.is_valid())
+        self.assertEqual(form.save().item, item)
+
+    def test_busca_com_varios_resultados_pede_mais_detalhe(self):
+        self.criar_item(codigo='OVR-001')
+        self.criar_item(codigo='OVR-002')
+        form = MovimentacaoForm({'busca_item': 'Oversized', 'tipo': 'E', 'quantidade': 1})
+        self.assertFalse(form.is_valid())
+        self.assertIn('Mais de uma', form.errors['busca_item'][0])
+        # O código completo resolve a ambiguidade
+        form = MovimentacaoForm({'busca_item': 'ovr-002', 'tipo': 'E', 'quantidade': 1})
         self.assertTrue(form.is_valid())
 
-    def test_form_nao_lista_item_inativo(self):
-        ativo = self.criar_item(codigo='OVR-001')
-        inativo = self.criar_item(codigo='OVR-002', ativo=False)
-        itens = MovimentacaoForm().fields['item'].queryset
-        self.assertIn(ativo, itens)
-        self.assertNotIn(inativo, itens)
+    def test_busca_nao_acha_item_inativo_nem_inexistente(self):
+        inativo = self.criar_item(codigo='OVR-001', ativo=False)
+        for texto in [inativo.codigo, 'xyz']:
+            form = MovimentacaoForm({'busca_item': texto, 'tipo': 'E', 'quantidade': 1})
+            self.assertFalse(form.is_valid(), texto)
+            self.assertIn('Nenhuma camiseta ativa', form.errors['busca_item'][0])
 
 
 class ViewTests(BaseTestCase):
@@ -101,6 +122,25 @@ class ViewTests(BaseTestCase):
         self.assertRedirects(resposta, reverse('lista_itens'))
         # O código não é digitado: nasce do prefixo da categoria (OVR)
         self.assertTrue(Item.objects.filter(codigo='OVR-001').exists())
+
+
+class MovimentacaoViewTests(BaseTestCase):
+
+    def test_atalho_item_preenche_a_busca_com_o_codigo(self):
+        item = self.criar_item()
+        resposta = self.client.get(reverse('criar_movimentacao'), {'item': item.pk})
+        self.assertEqual(resposta.context['form'].initial['busca_item'], 'OVR-001')
+
+    def test_atalho_item_invalido_nao_quebra(self):
+        resposta = self.client.get(reverse('criar_movimentacao'), {'item': 'abc'})
+        self.assertEqual(resposta.status_code, 200)
+
+    def test_registrar_pela_tela_redireciona_para_a_camiseta(self):
+        item = self.criar_item()
+        dados = {'busca_item': 'OVR-001', 'tipo': 'E', 'quantidade': 6}
+        resposta = self.client.post(reverse('criar_movimentacao'), dados)
+        self.assertRedirects(resposta, reverse('detalhar_item', args=[item.pk]))
+        self.assertEqual(item.saldo, 6)
 
 
 class CodigoAutomaticoTests(BaseTestCase):
