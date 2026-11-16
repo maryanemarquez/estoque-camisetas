@@ -1,30 +1,55 @@
 /* ==============================================================
    estoque/static/estoque/estilo.css
    Papel: estilo próprio e simples do projeto (sem Bootstrap).
+   Etapa 6: aprimoramento visual. As cores ficam em variáveis (:root)
+   e os cartões e tabelas ganham cantos arredondados e borda suave.
    ============================================================== */
+
+/* Cores do projeto: para trocar o tema, basta mudar estes valores */
+:root {
+    --fundo: #f8f4ee;
+    --cartao: #fff;
+    --borda: #e5dfd5;
+    --texto: #1f2937;
+    --texto-suave: #6b7280;
+    --destaque: #d9591a;
+    --destaque-escuro: #b8460f;
+    --menu: #111827;
+    --raio: 10px;
+}
 
 body {
     font-family: Arial, Helvetica, sans-serif;
     margin: 0;
-    background: #f4f4f6;
-    color: #222;
+    background: var(--fundo);
+    color: var(--texto);
 }
 
 /* Menu superior */
 nav {
-    background: #1f2937;
-    padding: 12px 24px;
+    background: var(--menu);
+    padding: 10px 24px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
 }
 
 nav a {
     color: #fff;
     text-decoration: none;
-    margin-right: 20px;
+    padding: 6px 14px;
+    border-radius: 999px;
     font-weight: bold;
+    font-size: 0.95em;
 }
 
 nav a:hover {
-    text-decoration: underline;
+    background: rgba(255, 255, 255, 0.12);
+}
+
+/* Link da página atual (class="ativo" vem do base.html) */
+nav a.ativo {
+    background: rgba(255, 255, 255, 0.18);
 }
 
 main {
@@ -33,9 +58,16 @@ main {
     padding: 0 16px;
 }
 
+/* Subtítulo cinza logo abaixo do título da página */
+.subtitulo {
+    color: var(--texto-suave);
+    font-size: 0.9em;
+    margin: -8px 0 20px 0;
+}
+
 footer {
     text-align: center;
-    color: #777;
+    color: var(--texto-suave);
     font-size: 0.85em;
     padding: 24px 0;
 }
@@ -44,19 +76,20 @@ footer {
 button,
 .botao {
     display: inline-block;
-    background: #2563eb;
+    background: var(--destaque);
     color: #fff;
     border: none;
-    padding: 8px 14px;
-    border-radius: 4px;
+    padding: 8px 16px;
+    border-radius: 999px;
     text-decoration: none;
     font-size: 0.95em;
+    font-weight: bold;
     cursor: pointer;
 }
 
 button:hover,
 .botao:hover {
-    background: #1d4ed8;
+    background: var(--destaque-escuro);
 }
 
 .perigo,
@@ -69,15 +102,34 @@ button.perigo:hover {
     background: #b91c1c;
 }
 
+/* Botão secundário: fundo branco com borda (Cancelar, Voltar) */
 .secundario {
-    background: #6b7280;
+    background: var(--cartao);
+    color: var(--texto);
+    border: 1px solid var(--borda);
 }
 
 .secundario:hover {
-    background: #4b5563;
+    background: #f1ede6;
 }
 
-/* Formulários */
+/* Foco visível ao navegar pelo teclado */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible {
+    outline: 2px solid var(--destaque);
+    outline-offset: 2px;
+}
+
+/* Formulários: cada form vira um cartão */
+form {
+    background: var(--cartao);
+    border: 1px solid var(--borda);
+    border-radius: var(--raio);
+    padding: 4px 18px 16px 18px;
+}
+
 form p {
     margin: 12px 0;
 }
@@ -85,16 +137,26 @@ form p {
 form label {
     display: block;
     font-weight: bold;
+    font-size: 0.9em;
+    color: var(--texto-suave);
     margin-bottom: 4px;
 }
 
 input[type="text"],
 input[type="number"],
 select {
-    padding: 6px;
+    padding: 8px;
     width: 100%;
     max-width: 360px;
     box-sizing: border-box;
+    border: 1px solid var(--borda);
+    border-radius: 8px;
+    background: #fff;
+    font-size: 0.95em;
+}
+
+input[type="checkbox"] {
+    accent-color: var(--destaque);
 }
 
 .errorlist {
@@ -108,6 +170,7 @@ select {
 /* Busca */
 .busca {
     margin: 16px 0;
+    padding: 12px 18px;
 }
 
 .busca input[type="text"] {
@@ -117,33 +180,51 @@ select {
 /* Tabela */
 table {
     width: 100%;
-    border-collapse: collapse;
-    background: #fff;
+    border-collapse: separate;
+    border-spacing: 0;
+    background: var(--cartao);
+    border: 1px solid var(--borda);
+    border-radius: var(--raio);
+    overflow: hidden;
     margin: 16px 0;
 }
 
 th,
 td {
-    padding: 8px 10px;
-    border-bottom: 1px solid #e5e7eb;
+    padding: 10px 8px;
+    border-bottom: 1px solid #eeeae2;
     text-align: left;
 }
 
+tbody tr:last-child td {
+    border-bottom: none;
+}
+
 th {
-    background: #e5e7eb;
+    background: #f3efe8;
+    color: var(--texto-suave);
+    font-size: 0.75em;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
 }
 
-td a {
-    color: #2563eb;
+/* Links comuns: cor de destaque, sem sublinhado (aparece só ao passar o mouse) */
+main a:not(.botao) {
+    color: var(--destaque);
+    text-decoration: none;
 }
 
-/* Status e saldo */
+main a:not(.botao):hover {
+    text-decoration: underline;
+}
+
+/* Status e saldo: selos em formato de pílula */
 .status {
     display: inline-block;
-    padding: 2px 8px;
-    border-radius: 10px;
-    background: #fee2e2;
-    color: #991b1b;
+    padding: 2px 10px;
+    border-radius: 999px;
+    background: #ece9e3;
+    color: var(--texto-suave);
     font-size: 0.85em;
 }
 
@@ -157,11 +238,19 @@ td a {
     font-weight: bold;
 }
 
+/* Código da camiseta em fonte monoespaçada */
+.codigo {
+    font-family: Consolas, "Courier New", monospace;
+    font-size: 0.85em;
+    color: var(--texto-suave);
+}
+
 /* Detalhe */
 dl {
-    background: #fff;
+    background: var(--cartao);
+    border: 1px solid var(--borda);
     padding: 12px 16px;
-    border-radius: 4px;
+    border-radius: var(--raio);
 }
 
 dt {
@@ -178,7 +267,7 @@ dd {
 }
 
 .vazio {
-    color: #777;
+    color: var(--texto-suave);
     font-style: italic;
 }
 
@@ -187,7 +276,7 @@ dd {
     background: #fef3c7;
     color: #92400e;
     padding: 10px 14px;
-    border-radius: 4px;
+    border-radius: var(--raio);
 }
 
 /* Etapa 4: alerta de estoque baixo */
@@ -195,7 +284,7 @@ dd {
     background: #fee2e2;
     color: #991b1b;
     padding: 10px 14px;
-    border-radius: 4px;
+    border-radius: var(--raio);
     font-weight: bold;
 }
 
@@ -203,7 +292,7 @@ dd {
     display: inline-block;
     margin-left: 6px;
     padding: 2px 8px;
-    border-radius: 10px;
+    border-radius: 999px;
     background: #fee2e2;
     color: #991b1b;
     font-size: 0.8em;
@@ -227,15 +316,73 @@ form label.inline {
 .cartao {
     flex: 1;
     min-width: 160px;
-    background: #fff;
+    background: var(--cartao);
+    border: 1px solid var(--borda);
     padding: 16px;
-    border-radius: 4px;
-    text-align: center;
+    border-radius: var(--raio);
 }
 
 .cartao .numero {
     display: block;
     font-size: 2em;
     font-weight: bold;
-    color: #2563eb;
+    color: var(--destaque);
+}
+
+/* Etapa 6: cartão "Em alerta" com o número em vermelho */
+.cartao.em-alerta .numero {
+    color: #b91c1c;
+}
+
+/* Etapa 6: selo do tipo de movimentação (Entrada / Saída) */
+.tipo {
+    display: inline-block;
+    padding: 2px 10px;
+    border-radius: 999px;
+    font-size: 0.85em;
+}
+
+.tipo-entrada {
+    background: #dcfce7;
+    color: #166534;
+}
+
+.tipo-saida {
+    background: #ece9e3;
+    color: var(--texto);
+}
+
+/* Etapa 6: lista de categorias em grade de cartões */
+.grade-categorias {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 16px;
+    margin: 16px 0;
+}
+
+.cartao-categoria {
+    background: var(--cartao);
+    border: 1px solid var(--borda);
+    border-radius: var(--raio);
+    padding: 14px 16px;
+}
+
+.cartao-categoria h2 {
+    margin: 0 0 4px 0;
+    font-size: 1.1em;
+}
+
+.cartao-categoria h2 a {
+    color: var(--texto);
+    text-decoration: none;
+}
+
+.cartao-categoria p {
+    margin: 0 0 10px 0;
+    color: var(--texto-suave);
+    font-size: 0.9em;
+}
+
+.cartao-categoria .vazio {
+    margin: 0;
 }

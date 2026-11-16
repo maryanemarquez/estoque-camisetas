@@ -4,7 +4,7 @@ Incluído por item_lista.html dentro do for (usa a variável 'item').
 {% endcomment %}
 <tr>
     <td><a href="{% url 'detalhar_item' item.pk %}">{{ item.nome }}</a></td>
-    <td>{{ item.codigo }}</td>
+    <td><span class="codigo">{{ item.codigo }}</span></td>
     <td>{{ item.categoria.nome }}</td>
     <td>{{ item.tamanho|default:"-" }}</td>
     <td>{{ item.cor|default:"-" }}</td>
