@@ -1,31 +1,56 @@
 {% extends 'base.html' %}
 {% comment %}
-item_lista.html — lista de camisetas com busca por nome/código e filtros de categoria e alerta.
+item_lista.html — lista de camisetas com busca por nome/código, filtros de categoria e alerta
+e ordenação por nome, código ou preço (D30).
+Etapa 7: campos em grade, cada um com rótulo; checkbox e botões na barra de ações.
 Cada linha vem do parcial _item_linha.html.
 {% endcomment %}
 
 {% block titulo %}{{ block.super }} - Camisetas{% endblock %}
 
 {% block conteudo %}
-<h1>Camisetas</h1>
-<p class="subtitulo">Busque, filtre e consulte o estoque</p>
+<div class="cabecalho-pagina">
+    <div>
+        <h1>Camisetas</h1>
+        <p class="subtitulo">Busque, filtre e consulte o estoque</p>
+    </div>
+    <a href="{% url 'criar_item' %}" class="botao">+ Nova camiseta</a>
+</div>
 
 <form method="get" class="busca">
-    <input type="text" name="q" value="{{ busca|default:'' }}" placeholder="Buscar por nome ou código">
-    <select name="categoria">
-        <option value="">Todas as categorias</option>
-        {% for c in categorias %}
-            <option value="{{ c.pk }}" {% if c.pk|stringformat:'s' == categoria %}selected{% endif %}>{{ c.nome }}</option>
-        {% endfor %}
-    </select>
-    <label class="inline">
-        <input type="checkbox" name="alerta" value="1" {% if alerta %}checked{% endif %}> Somente em alerta
-    </label>
-    <button type="submit">Filtrar</button>
-    {% if busca or categoria or alerta %}<a href="{% url 'lista_itens' %}">Limpar</a>{% endif %}
+    <div class="campo">
+        <label for="busca-q">Buscar</label>
+        <input type="text" id="busca-q" name="q" value="{{ busca|default:'' }}" placeholder="Buscar por nome ou código">
+    </div>
+    <div class="campo">
+        <label for="busca-categoria">Categoria</label>
+        <select id="busca-categoria" name="categoria">
+            <option value="">Todas as categorias</option>
+            {% for c in categorias %}
+                <option value="{{ c.pk }}" {% if c.pk|stringformat:'s' == categoria %}selected{% endif %}>{{ c.nome }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="campo">
+        <label for="busca-ordem">Ordenar por</label>
+        <select id="busca-ordem" name="ordem">
+            <option value="nome" {% if ordem == 'nome' %}selected{% endif %}>Nome (A→Z)</option>
+            <option value="codigo" {% if ordem == 'codigo' %}selected{% endif %}>Código (menor→maior)</option>
+            <option value="-codigo" {% if ordem == '-codigo' %}selected{% endif %}>Código (maior→menor)</option>
+            <option value="preco" {% if ordem == 'preco' %}selected{% endif %}>Preço (menor→maior)</option>
+            <option value="-preco" {% if ordem == '-preco' %}selected{% endif %}>Preço (maior→menor)</option>
+        </select>
+    </div>
+    <div class="busca-acoes">
+        <label class="caixa-check">
+            <input type="checkbox" name="alerta" value="1" {% if alerta %}checked{% endif %}> Somente em alerta
+        </label>
+        <div class="busca-botoes">
+            <button type="submit">Filtrar</button>
+            {% if busca or categoria or alerta or ordem != 'nome' %}<a href="{% url 'lista_itens' %}" class="botao secundario">Limpar</a>{% endif %}
+        </div>
+    </div>
 </form>
-
-<a href="{% url 'criar_item' %}" class="botao">+ Nova camiseta</a>
 
 <table>
     <thead>

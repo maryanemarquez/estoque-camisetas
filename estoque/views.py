@@ -4,6 +4,7 @@
 # Etapa 2: CRUD de Item. Etapa 3: CRUD de Categoria e Movimentação
 # (esta última sem editar/excluir: o histórico não é alterado).
 # Etapa 4: dashboard na página inicial e filtros na lista de itens.
+# Etapa 7: ordenação da lista de itens por código e preço.
 # Conceito novo: Q (importado de django.db.models) permite combinar
 # condições com "ou" no filter(). Aqui, a busca acha o texto no
 # nome OU no código da camiseta.
@@ -13,6 +14,9 @@ from django.shortcuts import get_object_or_404, redirect, render
 
 from .forms import CategoriaForm, ItemForm, MovimentacaoForm
 from .models import Categoria, Item, Movimentacao
+
+# Ordenações permitidas na lista de camisetas (o '-' inverte a ordem)
+ORDENACOES = ['nome', 'codigo', '-codigo', 'preco', '-preco']
 
 
 def inicio(request):
@@ -35,8 +39,13 @@ def inicio(request):
 # ----------------------------- Item -----------------------------
 
 def lista_itens(request):
-    """Lista as camisetas, com busca por nome/código e filtros de categoria e alerta."""
-    itens = Item.objects.all().order_by('nome')
+    """Lista as camisetas, com busca por nome/código, filtros e ordenação."""
+    # Só estes valores são aceitos em ?ordem=; qualquer outro volta para 'nome' (D30)
+    ordem = request.GET.get('ordem')
+    if ordem not in ORDENACOES:
+        ordem = 'nome'
+    # O código desempata itens com o mesmo nome ou preço
+    itens = Item.objects.all().order_by(ordem, 'codigo')
     busca = request.GET.get('q')
     if busca:
         # icontains ignora maiúsculas/minúsculas; Q liga as duas condições com "ou"
@@ -59,6 +68,7 @@ def lista_itens(request):
         'categorias': Categoria.objects.all().order_by('nome'),
         'categoria': categoria or '',
         'alerta': alerta,
+        'ordem': ordem,
     }
     return render(request, 'estoque/item_lista.html', contexto)
 
