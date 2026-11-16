@@ -7,7 +7,7 @@
 from django.test import TestCase
 from django.urls import reverse
 
-from .forms import MovimentacaoForm
+from .forms import CategoriaForm, MovimentacaoForm
 from .models import Categoria, Item, Movimentacao
 
 
@@ -15,7 +15,7 @@ class BaseTestCase(TestCase):
     """Cria uma categoria e funções auxiliares usadas pelos testes."""
 
     def setUp(self):
-        self.categoria = Categoria.objects.create(nome='Oversized')
+        self.categoria = Categoria.objects.create(nome='Oversized', prefixo='OVR')
 
     def criar_item(self, codigo='OVR-001', minimo=2, ativo=True):
         return Item.objects.create(
@@ -73,8 +73,10 @@ class ViewTests(BaseTestCase):
 
     def test_lista_responde_200_e_busca_por_codigo(self):
         self.criar_item(codigo='OVR-001')
+        # D28: o código acompanha a categoria, então o BXY-001 precisa de categoria BXY
+        boxy = Categoria.objects.create(nome='Boxy', prefixo='BXY')
         outro = Item.objects.create(
-            nome='Boxy Teste', codigo='BXY-001', categoria=self.categoria, preco='99.90',
+            nome='Boxy Teste', codigo='BXY-001', categoria=boxy, preco='99.90',
         )
         resposta = self.client.get(reverse('lista_itens'))
         self.assertEqual(resposta.status_code, 200)
@@ -91,10 +93,95 @@ class ViewTests(BaseTestCase):
 
     def test_criar_item_valido_redireciona_para_a_lista(self):
         dados = {
-            'nome': 'Graphic Teste', 'codigo': 'GRF-001', 'categoria': self.categoria.pk,
+            'nome': 'Graphic Teste', 'categoria': self.categoria.pk,
             'tamanho': 'M', 'cor': 'Preto', 'preco': '159.90',
             'estoque_minimo': 3, 'ativo': 'on',
         }
         resposta = self.client.post(reverse('criar_item'), dados)
         self.assertRedirects(resposta, reverse('lista_itens'))
-        self.assertTrue(Item.objects.filter(codigo='GRF-001').exists())
+        # O código não é digitado: nasce do prefixo da categoria (OVR)
+        self.assertTrue(Item.objects.filter(codigo='OVR-001').exists())
+
+
+class CodigoAutomaticoTests(BaseTestCase):
+    """Código PREFIXO-NNN gerado pela categoria (D26 a D29)."""
+
+    def novo(self, categoria=None):
+        return Item.objects.create(
+            nome='Teste', categoria=categoria or self.categoria, preco='99.90',
+        )
+
+    def test_primeiro_codigo_da_categoria(self):
+        self.assertEqual(self.novo().codigo, 'OVR-001')
+
+    def test_gera_o_maior_mais_um_mesmo_com_lacuna(self):
+        self.criar_item(codigo='OVR-001')
+        self.criar_item(codigo='OVR-003')
+        self.assertEqual(self.novo().codigo, 'OVR-004')
+
+    def test_categorias_tem_sequencias_independentes(self):
+        boxy = Categoria.objects.create(nome='Boxy', prefixo='BXY')
+        self.assertEqual(self.novo().codigo, 'OVR-001')
+        self.assertEqual(self.novo(boxy).codigo, 'BXY-001')
+        self.assertEqual(self.novo().codigo, 'OVR-002')
+
+    def test_trocar_a_categoria_gera_novo_codigo(self):
+        boxy = Categoria.objects.create(nome='Boxy', prefixo='BXY')
+        item = self.novo()
+        item.categoria = boxy
+        item.save()
+        self.assertEqual(item.codigo, 'BXY-001')
+
+    def test_editar_sem_trocar_a_categoria_mantem_o_codigo(self):
+        item = self.novo()
+        item.nome = 'Outro nome'
+        item.save()
+        self.assertEqual(Item.objects.get(pk=item.pk).codigo, 'OVR-001')
+
+
+class CategoriaFormTests(BaseTestCase):
+
+    def test_prefixo_vira_maiusculo(self):
+        form = CategoriaForm({'nome': 'Boxy', 'prefixo': ' bxy '})
+        self.assertTrue(form.is_valid())
+        self.assertEqual(form.cleaned_data['prefixo'], 'BXY')
+
+    def test_prefixo_invalido_ou_repetido_e_rejeitado(self):
+        for prefixo in ['AB', 'ABCD', 'A1C', 'ÁBC', 'OVR']:
+            form = CategoriaForm({'nome': 'Teste', 'prefixo': prefixo})
+            self.assertFalse(form.is_valid(), prefixo)
+            self.assertIn('prefixo', form.errors, prefixo)
+
+    def test_prefixo_bloqueado_quando_a_categoria_tem_camisetas(self):
+        self.criar_item()
+        form = CategoriaForm(instance=self.categoria)
+        self.assertTrue(form.fields['prefixo'].disabled)
+        # Mesmo que alguém envie outro valor, o prefixo original é mantido
+        form = CategoriaForm({'nome': 'Oversized', 'prefixo': 'XYZ'}, instance=self.categoria)
+        self.assertTrue(form.is_valid())
+        self.assertEqual(form.save().prefixo, 'OVR')
+
+
+class OrdenacaoTests(BaseTestCase):
+
+    def setUp(self):
+        super().setUp()
+        # Preços escolhidos para que a ordem por preço difira da ordem por código
+        for preco in ['150.00', '90.00', '120.00']:
+            Item.objects.create(nome='Teste', categoria=self.categoria, preco=preco)
+
+    def codigos(self, ordem):
+        resposta = self.client.get(reverse('lista_itens'), {'ordem': ordem})
+        return [item.codigo for item in resposta.context['itens']]
+
+    def test_codigo_decrescente(self):
+        self.assertEqual(self.codigos('-codigo'), ['OVR-003', 'OVR-002', 'OVR-001'])
+
+    def test_preco_crescente(self):
+        self.assertEqual(self.codigos('preco'), ['OVR-002', 'OVR-003', 'OVR-001'])
+
+    def test_ordem_invalida_volta_para_nome(self):
+        resposta = self.client.get(reverse('lista_itens'), {'ordem': 'inventada'})
+        self.assertEqual(resposta.status_code, 200)
+        self.assertEqual(resposta.context['ordem'], 'nome')
+
