@@ -15,11 +15,11 @@ class ItemForm(forms.ModelForm):
 
     class Meta:
         model = Item
-        fields = ['nome', 'codigo', 'categoria', 'tamanho', 'cor',
+        # O código não está aqui: é gerado pela categoria no save() (D27)
+        fields = ['nome', 'categoria', 'tamanho', 'cor',
                   'preco', 'estoque_minimo', 'ativo']
         labels = {
             'nome': 'Nome',
-            'codigo': 'Código',
             'categoria': 'Categoria',
             'tamanho': 'Tamanho',
             'cor': 'Cor',
@@ -29,8 +29,12 @@ class ItemForm(forms.ModelForm):
         }
         widgets = {
             'nome': forms.TextInput(attrs={'placeholder': 'Ex.: Camiseta Oversized'}),
-            'codigo': forms.TextInput(attrs={'placeholder': 'Ex.: MAS-001'}),
         }
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        # Texto da opção vazia do select (o padrão do Django é "---------")
+        self.fields['categoria'].empty_label = 'Selecione a categoria'
 
 
 class CategoriaForm(forms.ModelForm):
@@ -38,13 +42,29 @@ class CategoriaForm(forms.ModelForm):
 
     class Meta:
         model = Categoria
-        fields = ['nome']
+        fields = ['nome', 'prefixo']
         labels = {
             'nome': 'Nome da categoria',
+            'prefixo': 'Prefixo do código (3 letras)',
         }
         widgets = {
             'nome': forms.TextInput(attrs={'placeholder': 'Ex.: Camisetas básicas'}),
+            'prefixo': forms.TextInput(attrs={'placeholder': 'Ex.: BSC', 'maxlength': 3}),
         }
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        # D29: com camisetas já cadastradas, o prefixo fica bloqueado; trocá-lo
+        # deixaria os códigos existentes fora do padrão da categoria
+        if self.instance.pk and self.instance.itens.exists():
+            self.fields['prefixo'].disabled = True
+
+    def clean_prefixo(self):
+        """Exige 3 letras (A-Z) e grava em maiúsculas."""
+        prefixo = self.cleaned_data['prefixo'].strip().upper()
+        if len(prefixo) != 3 or not prefixo.isascii() or not prefixo.isalpha():
+            raise forms.ValidationError('Informe exatamente 3 letras, sem números ou acentos.')
+        return prefixo
 
 
 class MovimentacaoForm(forms.ModelForm):
@@ -67,6 +87,9 @@ class MovimentacaoForm(forms.ModelForm):
         super().__init__(*args, **kwargs)
         # D14: item inativo não recebe movimentação, então o select lista só ativos
         self.fields['item'].queryset = Item.objects.filter(ativo=True).order_by('nome')
+        # Opções vazias em português (o padrão do Django é "---------")
+        self.fields['item'].empty_label = 'Selecione a camiseta'
+        self.fields['tipo'].choices = [('', 'Selecione o tipo')] + Movimentacao.TIPOS
 
     def clean(self):
         """Valida a quantidade e impede saída maior que o saldo (D15)."""
