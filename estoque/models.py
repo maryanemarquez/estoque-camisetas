@@ -9,6 +9,8 @@ from django.db import models
 class Categoria(models.Model):
     """Agrupa os itens (ex.: Camisetas básicas, Estampadas)."""
     nome = models.CharField(max_length=60)
+    # unique=True: cada categoria tem um prefixo próprio (D26). Ex.: OVR
+    prefixo = models.CharField(max_length=3, unique=True)
 
     class Meta:
         verbose_name = 'Categoria'
@@ -22,7 +24,8 @@ class Item(models.Model):
     """Produto do estoque. Rótulo visível: Camiseta."""
     nome = models.CharField(max_length=100)
     # unique=True: não permite dois itens com o mesmo código (D7)
-    codigo = models.CharField(max_length=20, unique=True)
+    # blank=True: o código nasce vazio no formulário e o save() preenche (D27)
+    codigo = models.CharField(max_length=20, unique=True, blank=True)
     # CASCADE: apagar a categoria apaga seus itens (D1)
     categoria = models.ForeignKey(
         Categoria, on_delete=models.CASCADE, related_name='itens'
@@ -39,6 +42,22 @@ class Item(models.Model):
 
     def __str__(self):
         return f'{self.nome} ({self.codigo})'
+
+    def gerar_codigo(self):
+        """Próximo código da categoria no formato PREFIXO-NNN (D26)."""
+        prefixo = self.categoria.prefixo
+        # Usa o maior número existente + 1 (e não a contagem), para que
+        # lacunas deixadas por exclusões não repitam um código
+        maior = 0
+        for item in Item.objects.filter(codigo__startswith=f'{prefixo}-'):
+            maior = max(maior, int(item.codigo.split('-')[1]))
+        return f'{prefixo}-{maior + 1:03d}'
+
+    def save(self, *args, **kwargs):
+        """Gera o código quando vazio ou quando não pertence à categoria atual (D28)."""
+        if not self.codigo or not self.codigo.startswith(f'{self.categoria.prefixo}-'):
+            self.codigo = self.gerar_codigo()
+        super().save(*args, **kwargs)
 
     @property
     def saldo(self):
