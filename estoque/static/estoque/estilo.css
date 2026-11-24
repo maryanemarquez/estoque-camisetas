@@ -3,6 +3,8 @@
    Papel: estilo próprio e simples do projeto (sem Bootstrap).
    Etapa 6: aprimoramento visual. As cores ficam em variáveis (:root)
    e os cartões e tabelas ganham cantos arredondados e borda suave.
+   Etapa 7: campos padronizados (altura, borda, foco, seta do select) e
+   barra de busca/filtros organizada em grade.
    ============================================================== */
 
 /* Cores do projeto: para trocar o tema, basta mudar estes valores */
@@ -65,6 +67,11 @@ main {
     margin: -8px 0 20px 0;
 }
 
+/* Dentro de um formulário o subtítulo não sobe (a margem negativa o colaria na borda) */
+form .subtitulo {
+    margin: 12px 0;
+}
+
 footer {
     text-align: center;
     color: var(--texto-suave);
@@ -82,6 +89,8 @@ button,
     padding: 8px 16px;
     border-radius: 999px;
     text-decoration: none;
+    /* inherit: o <button> usaria a fonte do sistema em vez da Arial do site */
+    font-family: inherit;
     font-size: 0.95em;
     font-weight: bold;
     cursor: pointer;
@@ -113,11 +122,9 @@ button.perigo:hover {
     background: #f1ede6;
 }
 
-/* Foco visível ao navegar pelo teclado */
+/* Foco visível ao navegar pelo teclado (os campos têm o próprio destaque, mais abaixo) */
 a:focus-visible,
-button:focus-visible,
-input:focus-visible,
-select:focus-visible {
+button:focus-visible {
     outline: 2px solid var(--destaque);
     outline-offset: 2px;
 }
@@ -142,21 +149,67 @@ form label {
     margin-bottom: 4px;
 }
 
+/* Campos (todas as telas): mesma altura, borda, fonte e foco.
+   Texto digitado em --texto; rótulos e placeholders no mesmo cinza (--texto-suave). */
 input[type="text"],
 input[type="number"],
 select {
-    padding: 8px;
     width: 100%;
     max-width: 360px;
+    height: 40px;
+    padding: 0 12px;
     box-sizing: border-box;
     border: 1px solid var(--borda);
     border-radius: 8px;
     background: #fff;
+    color: var(--texto);
+    font-family: inherit;
     font-size: 0.95em;
+}
+
+input::placeholder {
+    color: var(--texto-suave);
+    opacity: 1;
+}
+
+input[type="text"]:hover,
+input[type="number"]:hover,
+select:hover {
+    border-color: #cfc7ba;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus,
+select:focus {
+    outline: none;
+    border-color: var(--destaque);
+    box-shadow: 0 0 0 3px rgba(217, 89, 26, 0.18);
+}
+
+/* Campo bloqueado (ex.: prefixo de categoria que já tem camisetas) */
+input:disabled,
+select:disabled {
+    background-color: #f3efe8;
+    color: var(--texto-suave);
+    cursor: not-allowed;
+}
+
+/* Seta própria no select, para ficar igual em qualquer navegador */
+select {
+    appearance: none;
+    padding-right: 36px;
+    cursor: pointer;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'><path d='M1 1.5l5 5 5-5' fill='none' stroke='%236b7280' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/></svg>");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 12px 8px;
 }
 
 input[type="checkbox"] {
     accent-color: var(--destaque);
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
 }
 
 .errorlist {
@@ -167,14 +220,101 @@ input[type="checkbox"] {
     font-size: 0.9em;
 }
 
-/* Busca */
-.busca {
-    margin: 16px 0;
-    padding: 12px 18px;
+/* Cabeçalho da página: título à esquerda e botão de ação à direita */
+.cabecalho-pagina {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
 }
 
-.busca input[type="text"] {
-    width: 260px;
+/* Busca e filtros (Etapa 7): grade de 3 colunas + barra de ações embaixo */
+.busca {
+    display: grid;
+    grid-template-columns: minmax(220px, 2fr) repeat(2, minmax(170px, 1fr));
+    gap: 14px 16px;
+    align-items: end;
+    margin: 16px 0;
+    padding: 16px 18px;
+}
+
+.busca .campo {
+    min-width: 0;
+}
+
+/* Rótulo pequeno em caixa alta, no mesmo estilo dos cabeçalhos da tabela */
+.busca .campo label {
+    font-size: 0.75em;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-bottom: 6px;
+}
+
+.busca input[type="text"],
+.busca select {
+    max-width: none;
+}
+
+.busca-acoes {
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    padding-top: 14px;
+    border-top: 1px solid #eeeae2;
+}
+
+.busca-botoes {
+    display: flex;
+    gap: 8px;
+}
+
+.busca-botoes button,
+.busca-botoes .botao {
+    display: inline-flex;
+    align-items: center;
+    height: 40px;
+    padding: 0 22px;
+    box-sizing: border-box;
+}
+
+/* "Somente em alerta": caixa com a mesma altura e borda dos campos */
+form label.caixa-check {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    height: 40px;
+    margin: 0;
+    padding: 0 14px;
+    box-sizing: border-box;
+    border: 1px solid var(--borda);
+    border-radius: 8px;
+    background: #fff;
+    font-size: 0.95em;
+    font-weight: normal;
+    cursor: pointer;
+}
+
+form label.caixa-check:hover {
+    border-color: #cfc7ba;
+}
+
+@media (max-width: 720px) {
+    .busca {
+        grid-template-columns: 1fr;
+    }
+
+    .busca-acoes {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .busca-botoes {
+        justify-content: flex-end;
+    }
 }
 
 /* Tabela */
@@ -296,13 +436,6 @@ dd {
     background: #fee2e2;
     color: #991b1b;
     font-size: 0.8em;
-}
-
-/* Etapa 4: filtros da lista */
-form label.inline {
-    display: inline;
-    font-weight: normal;
-    margin: 0 8px;
 }
 
 /* Etapa 4: dashboard da página inicial */

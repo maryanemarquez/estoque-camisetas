@@ -3,35 +3,40 @@
     "model": "estoque.categoria",
     "pk": 1,
     "fields": {
-      "nome": "Oversized"
+      "nome": "Oversized",
+      "prefixo": "OVR"
     }
   },
   {
     "model": "estoque.categoria",
     "pk": 2,
     "fields": {
-      "nome": "Boxy Cropped"
+      "nome": "Boxy Cropped",
+      "prefixo": "BXY"
     }
   },
   {
     "model": "estoque.categoria",
     "pk": 3,
     "fields": {
-      "nome": "Estampadas Graphic"
+      "nome": "Estampadas Graphic",
+      "prefixo": "GRF"
     }
   },
   {
     "model": "estoque.categoria",
     "pk": 4,
     "fields": {
-      "nome": "Básicas Premium"
+      "nome": "Básicas Premium",
+      "prefixo": "BSC"
     }
   },
   {
     "model": "estoque.categoria",
     "pk": 5,
     "fields": {
-      "nome": "Edição Limitada"
+      "nome": "Edição Limitada",
+      "prefixo": "LTD"
     }
   },
   {
