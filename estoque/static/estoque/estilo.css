@@ -519,3 +519,33 @@ dd {
 .cartao-categoria .vazio {
     margin: 0;
 }
+
+.grade-tecidos {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 16px;
+    margin: 16px 0;
+}
+
+.cartao-tecido {
+    background: var(--cartao);
+    border: 1px solid var(--borda);
+    border-radius: var(--raio);
+    padding: 14px 16px;
+}
+
+.cartao-tecido h2 {
+    margin: 0 0 4px 0;
+    font-size: 1.1em;
+}
+
+.cartao-tecido h2 a {
+    color: var(--texto);
+    text-decoration: none;
+}
+
+.cartao-tecido p {
+    margin: 0 0 10px 0;
+    color: var(--texto-suave);
+    font-size: 0.9em;
+}

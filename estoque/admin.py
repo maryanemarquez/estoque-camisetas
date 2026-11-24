@@ -5,16 +5,15 @@
 # =============================================================================
 from django.contrib import admin
 
-from .models import Categoria, Item, Movimentacao
+from .models import Categoria, Item, Movimentacao, Tecido
 
 
-@admin.register(Categoria)
+admin.site.register(Categoria)
 class CategoriaAdmin(admin.ModelAdmin):
     list_display = ['nome', 'prefixo']
     search_fields = ['nome', 'prefixo']
 
-
-@admin.register(Item)
+admin.site.register(Item)
 class ItemAdmin(admin.ModelAdmin):
     list_display = ['nome', 'codigo', 'categoria', 'tamanho', 'cor',
                     'preco', 'estoque_minimo', 'ativo']
@@ -23,8 +22,14 @@ class ItemAdmin(admin.ModelAdmin):
     readonly_fields = ['codigo']
 
 
-@admin.register(Movimentacao)
+admin.site.register(Movimentacao)
 class MovimentacaoAdmin(admin.ModelAdmin):
     list_display = ['item', 'tipo', 'quantidade', 'data']
     # item__nome busca no nome do item relacionado (atravessa a ForeignKey)
     search_fields = ['item__nome', 'item__codigo']
+
+# Implementação "Tecido"  - Realização da Prova. #
+admin.site.register(Tecido)
+class TecidoAdmin(admin.ModelAdmin):
+    list_display = ['nome', 'prefixo']
+    search_fields = ['nome', 'prefixo']

@@ -40,6 +40,46 @@
     }
   },
   {
+    "model": "estoque.tecido",
+    "pk": 1,
+    "fields": {
+      "nome": "Algodão 30.1",
+      "prefixo": "ALG"
+    }
+  },
+  {
+    "model": "estoque.tecido",
+    "pk": 2,
+    "fields": {
+      "nome": "Malha PV",
+      "prefixo": "MPV"
+    }
+  },
+  {
+    "model": "estoque.tecido",
+    "pk": 3,
+    "fields": {
+      "nome": "Moletom Flanelado",
+      "prefixo": "MOL"
+    }
+  },
+  {
+    "model": "estoque.tecido",
+    "pk": 4,
+    "fields": {
+      "nome": "Piquet",
+      "prefixo": "PIQ"
+    }
+  },
+  {
+    "model": "estoque.tecido",
+    "pk": 5,
+    "fields": {
+      "nome": "Viscolycra",
+      "prefixo": "VSC"
+    }
+  },
+  {
     "model": "estoque.item",
     "pk": 1,
     "fields": {
@@ -47,426 +87,456 @@
       "codigo": "OVR-001",
       "categoria": 1,
       "tamanho": "M",
-      "cor": "Cinza chumbo",
-      "preco": "139.90",
+      "cor": "Branco",
+      "preco": "144.90",
       "estoque_minimo": 5,
       "ativo": true
-    }
+    },
+    "_saldo": 39
   },
   {
     "model": "estoque.item",
     "pk": 2,
     "fields": {
-      "nome": "Oversized Midnight",
+      "nome": "Oversized Sand",
       "codigo": "OVR-002",
       "categoria": 1,
       "tamanho": "G",
-      "cor": "Preto",
-      "preco": "139.90",
-      "estoque_minimo": 6,
+      "cor": "Cinza chumbo",
+      "preco": "149.90",
+      "estoque_minimo": 5,
       "ativo": true
-    }
+    },
+    "_saldo": 3
   },
   {
     "model": "estoque.item",
     "pk": 3,
     "fields": {
-      "nome": "Oversized Sand Dune",
+      "nome": "Oversized Midnight",
       "codigo": "OVR-003",
       "categoria": 1,
       "tamanho": "GG",
       "cor": "Areia",
       "preco": "139.90",
-      "estoque_minimo": 5,
+      "estoque_minimo": 10,
       "ativo": true
-    }
+    },
+    "_saldo": 15
   },
   {
     "model": "estoque.item",
     "pk": 4,
     "fields": {
-      "nome": "Oversized Army",
+      "nome": "Oversized Olive",
       "codigo": "OVR-004",
       "categoria": 1,
       "tamanho": "P",
-      "cor": "Verde militar",
-      "preco": "149.90",
-      "estoque_minimo": 5,
+      "cor": "Azul marinho",
+      "preco": "144.90",
+      "estoque_minimo": 3,
       "ativo": true
-    }
+    },
+    "_saldo": 11
   },
   {
     "model": "estoque.item",
     "pk": 5,
     "fields": {
-      "nome": "Oversized Lilac Haze",
+      "nome": "Oversized Off White",
       "codigo": "OVR-005",
       "categoria": 1,
       "tamanho": "M",
-      "cor": "Lilás",
+      "cor": "Verde oliva",
       "preco": "149.90",
       "estoque_minimo": 5,
       "ativo": true
-    }
+    },
+    "_saldo": 24
   },
   {
     "model": "estoque.item",
     "pk": 6,
     "fields": {
-      "nome": "Oversized Raw",
+      "nome": "Oversized Terracota",
       "codigo": "OVR-006",
       "categoria": 1,
       "tamanho": "G",
-      "cor": "Off-white",
-      "preco": "129.90",
-      "estoque_minimo": 4,
+      "cor": "Vinho",
+      "preco": "139.90",
+      "estoque_minimo": 10,
       "ativo": true
-    }
+    },
+    "_saldo": 8
   },
   {
     "model": "estoque.item",
     "pk": 7,
     "fields": {
-      "nome": "Boxy Neon Drip",
+      "nome": "Boxy Cropped Preta",
       "codigo": "BXY-001",
       "categoria": 2,
       "tamanho": "GG",
-      "cor": "Preto",
-      "preco": "99.90",
-      "estoque_minimo": 6,
+      "cor": "Rosa",
+      "preco": "104.90",
+      "estoque_minimo": 3,
       "ativo": true
-    }
+    },
+    "_saldo": 11
   },
   {
     "model": "estoque.item",
     "pk": 8,
     "fields": {
-      "nome": "Boxy Cloud",
+      "nome": "Boxy Cropped Branca",
       "codigo": "BXY-002",
       "categoria": 2,
       "tamanho": "P",
-      "cor": "Off-white",
-      "preco": "89.90",
+      "cor": "Lilás",
+      "preco": "109.90",
       "estoque_minimo": 5,
       "ativo": true
-    }
+    },
+    "_saldo": 27
   },
   {
     "model": "estoque.item",
     "pk": 9,
     "fields": {
-      "nome": "Boxy Lilac Cut",
+      "nome": "Boxy Cropped Rosa",
       "codigo": "BXY-003",
       "categoria": 2,
-      "tamanho": "Único",
-      "cor": "Lilás",
+      "tamanho": "M",
+      "cor": "Terracota",
       "preco": "99.90",
-      "estoque_minimo": 5,
-      "ativo": true
-    }
+      "estoque_minimo": 10,
+      "ativo": false
+    },
+    "_saldo": 35
   },
   {
     "model": "estoque.item",
     "pk": 10,
     "fields": {
-      "nome": "Boxy Olive Crop",
+      "nome": "Boxy Cropped Azul",
       "codigo": "BXY-004",
       "categoria": 2,
       "tamanho": "G",
-      "cor": "Verde militar",
-      "preco": "99.90",
+      "cor": "Off white",
+      "preco": "104.90",
       "estoque_minimo": 5,
       "ativo": true
-    }
+    },
+    "_saldo": 30
   },
   {
     "model": "estoque.item",
     "pk": 11,
     "fields": {
-      "nome": "Boxy Sand Crop",
+      "nome": "Boxy Cropped Verde",
       "codigo": "BXY-005",
       "categoria": 2,
       "tamanho": "GG",
-      "cor": "Areia",
-      "preco": "89.90",
-      "estoque_minimo": 4,
+      "cor": "Azul claro",
+      "preco": "109.90",
+      "estoque_minimo": 10,
       "ativo": true
-    }
+    },
+    "_saldo": 8
   },
   {
     "model": "estoque.item",
     "pk": 12,
     "fields": {
-      "nome": "Boxy Smoke",
+      "nome": "Boxy Cropped Lilás",
       "codigo": "BXY-006",
       "categoria": 2,
       "tamanho": "P",
-      "cor": "Cinza chumbo",
-      "preco": "94.90",
-      "estoque_minimo": 4,
+      "cor": "Preto",
+      "preco": "99.90",
+      "estoque_minimo": 5,
       "ativo": true
-    }
+    },
+    "_saldo": 35
   },
   {
     "model": "estoque.item",
     "pk": 13,
     "fields": {
-      "nome": "Graphic Tokyo Night",
+      "nome": "Graphic Skyline",
       "codigo": "GRF-001",
       "categoria": 3,
       "tamanho": "M",
-      "cor": "Preto",
-      "preco": "159.90",
-      "estoque_minimo": 5,
+      "cor": "Branco",
+      "preco": "124.90",
+      "estoque_minimo": 3,
       "ativo": true
-    }
+    },
+    "_saldo": 37
   },
   {
     "model": "estoque.item",
     "pk": 14,
     "fields": {
-      "nome": "Graphic Skate Chaos",
+      "nome": "Graphic Wave",
       "codigo": "GRF-002",
       "categoria": 3,
       "tamanho": "G",
-      "cor": "Off-white",
-      "preco": "159.90",
+      "cor": "Cinza chumbo",
+      "preco": "129.90",
       "estoque_minimo": 5,
       "ativo": true
-    }
+    },
+    "_saldo": 21
   },
   {
     "model": "estoque.item",
     "pk": 15,
     "fields": {
-      "nome": "Graphic Urban Jungle",
+      "nome": "Graphic Retrô",
       "codigo": "GRF-003",
       "categoria": 3,
       "tamanho": "GG",
-      "cor": "Verde militar",
-      "preco": "169.90",
+      "cor": "Areia",
+      "preco": "119.90",
       "estoque_minimo": 5,
       "ativo": true
-    }
+    },
+    "_saldo": 4
   },
   {
     "model": "estoque.item",
     "pk": 16,
     "fields": {
-      "nome": "Graphic Wave Riot",
+      "nome": "Graphic Urban",
       "codigo": "GRF-004",
       "categoria": 3,
       "tamanho": "P",
-      "cor": "Cinza chumbo",
-      "preco": "159.90",
+      "cor": "Azul marinho",
+      "preco": "124.90",
       "estoque_minimo": 5,
       "ativo": true
-    }
+    },
+    "_saldo": 18
   },
   {
     "model": "estoque.item",
     "pk": 17,
     "fields": {
-      "nome": "Graphic Retro Arcade",
+      "nome": "Graphic Neon",
       "codigo": "GRF-005",
       "categoria": 3,
       "tamanho": "M",
-      "cor": "Lilás",
-      "preco": "169.90",
-      "estoque_minimo": 4,
+      "cor": "Verde oliva",
+      "preco": "129.90",
+      "estoque_minimo": 5,
       "ativo": true
-    }
+    },
+    "_saldo": 16
   },
   {
     "model": "estoque.item",
     "pk": 18,
     "fields": {
-      "nome": "Graphic Cyber Rose",
+      "nome": "Graphic Minimal",
       "codigo": "GRF-006",
       "categoria": 3,
       "tamanho": "G",
-      "cor": "Preto",
-      "preco": "169.90",
-      "estoque_minimo": 3,
-      "ativo": false
-    }
+      "cor": "Vinho",
+      "preco": "119.90",
+      "estoque_minimo": 10,
+      "ativo": true
+    },
+    "_saldo": 12
   },
   {
     "model": "estoque.item",
     "pk": 19,
     "fields": {
-      "nome": "Premium Heavy Off-white",
+      "nome": "Básica Premium Preta",
       "codigo": "BSC-001",
       "categoria": 4,
       "tamanho": "GG",
-      "cor": "Off-white",
-      "preco": "119.90",
-      "estoque_minimo": 8,
+      "cor": "Rosa",
+      "preco": "84.90",
+      "estoque_minimo": 10,
       "ativo": true
-    }
+    },
+    "_saldo": 10
   },
   {
     "model": "estoque.item",
     "pk": 20,
     "fields": {
-      "nome": "Premium Heavy Preto",
+      "nome": "Básica Premium Branca",
       "codigo": "BSC-002",
       "categoria": 4,
       "tamanho": "P",
-      "cor": "Preto",
-      "preco": "119.90",
+      "cor": "Lilás",
+      "preco": "89.90",
       "estoque_minimo": 8,
       "ativo": true
-    }
+    },
+    "_saldo": 39
   },
   {
     "model": "estoque.item",
     "pk": 21,
     "fields": {
-      "nome": "Premium Heavy Cinza",
+      "nome": "Básica Premium Cinza",
       "codigo": "BSC-003",
       "categoria": 4,
       "tamanho": "M",
-      "cor": "Cinza chumbo",
-      "preco": "119.90",
-      "estoque_minimo": 8,
+      "cor": "Terracota",
+      "preco": "79.90",
+      "estoque_minimo": 5,
       "ativo": true
-    }
+    },
+    "_saldo": 28
   },
   {
     "model": "estoque.item",
     "pk": 22,
     "fields": {
-      "nome": "Premium Heavy Verde",
+      "nome": "Básica Premium Marinho",
       "codigo": "BSC-004",
       "categoria": 4,
       "tamanho": "G",
-      "cor": "Verde militar",
-      "preco": "124.90",
-      "estoque_minimo": 6,
+      "cor": "Off white",
+      "preco": "84.90",
+      "estoque_minimo": 3,
       "ativo": true
-    }
+    },
+    "_saldo": 17
   },
   {
     "model": "estoque.item",
     "pk": 23,
     "fields": {
-      "nome": "Premium Heavy Areia",
+      "nome": "Básica Premium Vinho",
       "codigo": "BSC-005",
       "categoria": 4,
       "tamanho": "GG",
-      "cor": "Areia",
-      "preco": "119.90",
-      "estoque_minimo": 6,
+      "cor": "Azul claro",
+      "preco": "89.90",
+      "estoque_minimo": 3,
       "ativo": true
-    }
+    },
+    "_saldo": 1
   },
   {
     "model": "estoque.item",
     "pk": 24,
     "fields": {
-      "nome": "Premium Heavy Lilás",
+      "nome": "Básica Premium Areia",
       "codigo": "BSC-006",
       "categoria": 4,
       "tamanho": "P",
-      "cor": "Lilás",
-      "preco": "124.90",
-      "estoque_minimo": 6,
-      "ativo": true
-    }
+      "cor": "Preto",
+      "preco": "79.90",
+      "estoque_minimo": 8,
+      "ativo": false
+    },
+    "_saldo": 48
   },
   {
     "model": "estoque.item",
     "pk": 25,
     "fields": {
-      "nome": "Drop 01 Glitch",
+      "nome": "Limitada Aurora",
       "codigo": "LTD-001",
       "categoria": 5,
       "tamanho": "M",
-      "cor": "Preto",
-      "preco": "219.90",
+      "cor": "Branco",
+      "preco": "194.90",
       "estoque_minimo": 3,
-      "ativo": false
-    }
+      "ativo": true
+    },
+    "_saldo": 19
   },
   {
     "model": "estoque.item",
     "pk": 26,
     "fields": {
-      "nome": "Drop 01 Acid Wash",
+      "nome": "Limitada Eclipse",
       "codigo": "LTD-002",
       "categoria": 5,
       "tamanho": "G",
       "cor": "Cinza chumbo",
-      "preco": "209.90",
+      "preco": "199.90",
       "estoque_minimo": 3,
-      "ativo": false
-    }
+      "ativo": true
+    },
+    "_saldo": 18
   },
   {
     "model": "estoque.item",
     "pk": 27,
     "fields": {
-      "nome": "Drop 01 Chrome",
+      "nome": "Limitada Dunas",
       "codigo": "LTD-003",
       "categoria": 5,
       "tamanho": "GG",
-      "cor": "Off-white",
-      "preco": "219.90",
+      "cor": "Areia",
+      "preco": "189.90",
       "estoque_minimo": 3,
       "ativo": true
-    }
+    },
+    "_saldo": 10
   },
   {
     "model": "estoque.item",
     "pk": 28,
     "fields": {
-      "nome": "Drop 02 Void",
+      "nome": "Limitada Oceano",
       "codigo": "LTD-004",
       "categoria": 5,
       "tamanho": "P",
-      "cor": "Preto",
-      "preco": "199.90",
-      "estoque_minimo": 4,
+      "cor": "Azul marinho",
+      "preco": "194.90",
+      "estoque_minimo": 10,
       "ativo": true
-    }
+    },
+    "_saldo": 9
   },
   {
     "model": "estoque.item",
     "pk": 29,
     "fields": {
-      "nome": "Drop 02 Smoke Signal",
+      "nome": "Limitada Vulcão",
       "codigo": "LTD-005",
       "categoria": 5,
-      "tamanho": "Único",
-      "cor": "Cinza chumbo",
+      "tamanho": "M",
+      "cor": "Verde oliva",
       "preco": "199.90",
-      "estoque_minimo": 4,
+      "estoque_minimo": 8,
       "ativo": true
-    }
+    },
+    "_saldo": 27
   },
   {
     "model": "estoque.item",
     "pk": 30,
     "fields": {
-      "nome": "Drop 02 Mono Script",
+      "nome": "Limitada Cedro",
       "codigo": "LTD-006",
       "categoria": 5,
       "tamanho": "G",
-      "cor": "Off-white",
+      "cor": "Vinho",
       "preco": "189.90",
-      "estoque_minimo": 4,
+      "estoque_minimo": 8,
       "ativo": true
-    }
+    },
+    "_saldo": 11
   },
   {
     "model": "estoque.movimentacao",
     "pk": 1,
     "fields": {
-      "item": 10,
+      "item": 22,
       "tipo": "E",
-      "quantidade": 15,
-      "data": "2026-09-15T12:00:00-03:00",
+      "quantidade": 28,
+      "data": "2026-09-01T09:00:00-03:00",
       "observacao": "Entrada de lote inicial"
     }
   },
@@ -474,10 +544,10 @@
     "model": "estoque.movimentacao",
     "pk": 2,
     "fields": {
-      "item": 12,
+      "item": 26,
       "tipo": "E",
-      "quantidade": 10,
-      "data": "2026-09-15T16:00:00-03:00",
+      "quantidade": 29,
+      "data": "2026-09-01T09:00:00-03:00",
       "observacao": "Entrada de lote inicial"
     }
   },
@@ -485,10 +555,10 @@
     "model": "estoque.movimentacao",
     "pk": 3,
     "fields": {
-      "item": 20,
+      "item": 3,
       "tipo": "E",
-      "quantidade": 10,
-      "data": "2026-09-15T17:00:00-03:00",
+      "quantidade": 22,
+      "data": "2026-09-02T09:00:00-03:00",
       "observacao": "Entrada de lote inicial"
     }
   },
@@ -496,21 +566,21 @@
     "model": "estoque.movimentacao",
     "pk": 4,
     "fields": {
-      "item": 26,
+      "item": 15,
       "tipo": "E",
-      "quantidade": 21,
-      "data": "2026-09-15T18:00:00-03:00",
-      "observacao": "Lançamento drop 01"
+      "quantidade": 39,
+      "data": "2026-09-02T09:00:00-03:00",
+      "observacao": "Entrada de lote inicial"
     }
   },
   {
     "model": "estoque.movimentacao",
     "pk": 5,
     "fields": {
-      "item": 16,
+      "item": 30,
       "tipo": "E",
-      "quantidade": 20,
-      "data": "2026-09-16T13:00:00-03:00",
+      "quantidade": 26,
+      "data": "2026-09-02T09:00:00-03:00",
       "observacao": "Entrada de lote inicial"
     }
   },
@@ -518,10 +588,10 @@
     "model": "estoque.movimentacao",
     "pk": 6,
     "fields": {
-      "item": 5,
+      "item": 8,
       "tipo": "E",
-      "quantidade": 28,
-      "data": "2026-09-16T14:00:00-03:00",
+      "quantidade": 35,
+      "data": "2026-09-03T09:00:00-03:00",
       "observacao": "Entrada de lote inicial"
     }
   },
@@ -529,10 +599,10 @@
     "model": "estoque.movimentacao",
     "pk": 7,
     "fields": {
-      "item": 24,
+      "item": 19,
       "tipo": "E",
-      "quantidade": 26,
-      "data": "2026-09-16T15:00:00-03:00",
+      "quantidade": 34,
+      "data": "2026-09-03T09:00:00-03:00",
       "observacao": "Entrada de lote inicial"
     }
   },
@@ -540,10 +610,10 @@
     "model": "estoque.movimentacao",
     "pk": 8,
     "fields": {
-      "item": 18,
+      "item": 25,
       "tipo": "E",
-      "quantidade": 12,
-      "data": "2026-09-16T18:00:00-03:00",
+      "quantidade": 33,
+      "data": "2026-09-03T09:00:00-03:00",
       "observacao": "Entrada de lote inicial"
     }
   },
@@ -551,10 +621,10 @@
     "model": "estoque.movimentacao",
     "pk": 9,
     "fields": {
-      "item": 8,
+      "item": 10,
       "tipo": "E",
-      "quantidade": 23,
-      "data": "2026-09-17T14:00:00-03:00",
+      "quantidade": 35,
+      "data": "2026-09-04T09:00:00-03:00",
       "observacao": "Entrada de lote inicial"
     }
   },
@@ -562,10 +632,10 @@
     "model": "estoque.movimentacao",
     "pk": 10,
     "fields": {
-      "item": 15,
+      "item": 18,
       "tipo": "E",
-      "quantidade": 29,
-      "data": "2026-09-17T14:00:00-03:00",
+      "quantidade": 32,
+      "data": "2026-09-04T09:00:00-03:00",
       "observacao": "Entrada de lote inicial"
     }
   },
@@ -573,10 +643,10 @@
     "model": "estoque.movimentacao",
     "pk": 11,
     "fields": {
-      "item": 17,
+      "item": 21,
       "tipo": "E",
-      "quantidade": 13,
-      "data": "2026-09-17T14:00:00-03:00",
+      "quantidade": 26,
+      "data": "2026-09-04T09:00:00-03:00",
       "observacao": "Entrada de lote inicial"
     }
   },
@@ -584,10 +654,10 @@
     "model": "estoque.movimentacao",
     "pk": 12,
     "fields": {
-      "item": 19,
+      "item": 2,
       "tipo": "E",
-      "quantidade": 24,
-      "data": "2026-09-17T14:00:00-03:00",
+      "quantidade": 37,
+      "data": "2026-09-05T09:00:00-03:00",
       "observacao": "Entrada de lote inicial"
     }
   },
@@ -595,21 +665,21 @@
     "model": "estoque.movimentacao",
     "pk": 13,
     "fields": {
-      "item": 28,
+      "item": 5,
       "tipo": "E",
-      "quantidade": 10,
-      "data": "2026-09-17T16:00:00-03:00",
-      "observacao": "Lançamento drop 02"
+      "quantidade": 35,
+      "data": "2026-09-05T09:00:00-03:00",
+      "observacao": "Entrada de lote inicial"
     }
   },
   {
     "model": "estoque.movimentacao",
     "pk": 14,
     "fields": {
-      "item": 3,
+      "item": 13,
       "tipo": "E",
       "quantidade": 23,
-      "data": "2026-09-18T12:00:00-03:00",
+      "data": "2026-09-05T09:00:00-03:00",
       "observacao": "Entrada de lote inicial"
     }
   },
@@ -617,21 +687,21 @@
     "model": "estoque.movimentacao",
     "pk": 15,
     "fields": {
-      "item": 30,
+      "item": 24,
       "tipo": "E",
-      "quantidade": 32,
-      "data": "2026-09-18T12:00:00-03:00",
-      "observacao": "Lançamento drop 02"
+      "quantidade": 31,
+      "data": "2026-09-05T09:00:00-03:00",
+      "observacao": "Entrada de lote inicial"
     }
   },
   {
     "model": "estoque.movimentacao",
     "pk": 16,
     "fields": {
-      "item": 14,
+      "item": 4,
       "tipo": "E",
-      "quantidade": 12,
-      "data": "2026-09-18T13:00:00-03:00",
+      "quantidade": 33,
+      "data": "2026-09-06T09:00:00-03:00",
       "observacao": "Entrada de lote inicial"
     }
   },
@@ -639,43 +709,43 @@
     "model": "estoque.movimentacao",
     "pk": 17,
     "fields": {
-      "item": 25,
+      "item": 11,
       "tipo": "E",
       "quantidade": 23,
-      "data": "2026-09-18T16:00:00-03:00",
-      "observacao": "Lançamento drop 01"
+      "data": "2026-09-06T09:00:00-03:00",
+      "observacao": "Entrada de lote inicial"
     }
   },
   {
     "model": "estoque.movimentacao",
     "pk": 18,
     "fields": {
-      "item": 29,
+      "item": 12,
       "tipo": "E",
-      "quantidade": 13,
-      "data": "2026-09-19T16:00:00-03:00",
-      "observacao": "Lançamento drop 02"
+      "quantidade": 37,
+      "data": "2026-09-06T09:00:00-03:00",
+      "observacao": "Entrada de lote inicial"
     }
   },
   {
     "model": "estoque.movimentacao",
     "pk": 19,
     "fields": {
-      "item": 16,
-      "tipo": "S",
-      "quantidade": 8,
-      "data": "2026-09-19T16:36:49-03:00",
-      "observacao": "Venda marketplace"
+      "item": 20,
+      "tipo": "E",
+      "quantidade": 38,
+      "data": "2026-09-06T09:00:00-03:00",
+      "observacao": "Entrada de lote inicial"
     }
   },
   {
     "model": "estoque.movimentacao",
     "pk": 20,
     "fields": {
-      "item": 4,
+      "item": 29,
       "tipo": "E",
-      "quantidade": 19,
-      "data": "2026-09-19T18:00:00-03:00",
+      "quantidade": 29,
+      "data": "2026-09-06T09:00:00-03:00",
       "observacao": "Entrada de lote inicial"
     }
   },
@@ -683,10 +753,10 @@
     "model": "estoque.movimentacao",
     "pk": 21,
     "fields": {
-      "item": 21,
+      "item": 1,
       "tipo": "E",
-      "quantidade": 23,
-      "data": "2026-09-19T18:00:00-03:00",
+      "quantidade": 33,
+      "data": "2026-09-07T09:00:00-03:00",
       "observacao": "Entrada de lote inicial"
     }
   },
@@ -694,32 +764,32 @@
     "model": "estoque.movimentacao",
     "pk": 22,
     "fields": {
-      "item": 5,
-      "tipo": "S",
-      "quantidade": 9,
-      "data": "2026-09-20T00:12:25-03:00",
-      "observacao": "Venda online"
+      "item": 6,
+      "tipo": "E",
+      "quantidade": 33,
+      "data": "2026-09-07T09:00:00-03:00",
+      "observacao": "Entrada de lote inicial"
     }
   },
   {
     "model": "estoque.movimentacao",
     "pk": 23,
     "fields": {
-      "item": 28,
-      "tipo": "S",
-      "quantidade": 5,
-      "data": "2026-09-20T13:56:22-03:00",
-      "observacao": "Venda loja"
+      "item": 7,
+      "tipo": "E",
+      "quantidade": 21,
+      "data": "2026-09-07T09:00:00-03:00",
+      "observacao": "Entrada de lote inicial"
     }
   },
   {
     "model": "estoque.movimentacao",
     "pk": 24,
     "fields": {
-      "item": 1,
+      "item": 9,
       "tipo": "E",
-      "quantidade": 34,
-      "data": "2026-09-20T14:00:00-03:00",
+      "quantidade": 39,
+      "data": "2026-09-07T09:00:00-03:00",
       "observacao": "Entrada de lote inicial"
     }
   },
@@ -727,10 +797,10 @@
     "model": "estoque.movimentacao",
     "pk": 25,
     "fields": {
-      "item": 7,
+      "item": 14,
       "tipo": "E",
-      "quantidade": 29,
-      "data": "2026-09-20T16:00:00-03:00",
+      "quantidade": 38,
+      "data": "2026-09-07T09:00:00-03:00",
       "observacao": "Entrada de lote inicial"
     }
   },
@@ -738,21 +808,21 @@
     "model": "estoque.movimentacao",
     "pk": 26,
     "fields": {
-      "item": 8,
-      "tipo": "S",
-      "quantidade": 15,
-      "data": "2026-09-21T10:30:46-03:00",
-      "observacao": "Venda loja"
+      "item": 16,
+      "tipo": "E",
+      "quantidade": 26,
+      "data": "2026-09-07T09:00:00-03:00",
+      "observacao": "Entrada de lote inicial"
     }
   },
   {
     "model": "estoque.movimentacao",
     "pk": 27,
     "fields": {
-      "item": 22,
+      "item": 17,
       "tipo": "E",
-      "quantidade": 19,
-      "data": "2026-09-21T16:00:00-03:00",
+      "quantidade": 22,
+      "data": "2026-09-07T09:00:00-03:00",
       "observacao": "Entrada de lote inicial"
     }
   },
@@ -760,21 +830,21 @@
     "model": "estoque.movimentacao",
     "pk": 28,
     "fields": {
-      "item": 27,
+      "item": 23,
       "tipo": "E",
-      "quantidade": 17,
-      "data": "2026-09-21T16:00:00-03:00",
-      "observacao": "Lançamento drop 01"
+      "quantidade": 24,
+      "data": "2026-09-07T09:00:00-03:00",
+      "observacao": "Entrada de lote inicial"
     }
   },
   {
     "model": "estoque.movimentacao",
     "pk": 29,
     "fields": {
-      "item": 11,
+      "item": 27,
       "tipo": "E",
-      "quantidade": 23,
-      "data": "2026-09-21T18:00:00-03:00",
+      "quantidade": 24,
+      "data": "2026-09-07T09:00:00-03:00",
       "observacao": "Entrada de lote inicial"
     }
   },
@@ -782,110 +852,110 @@
     "model": "estoque.movimentacao",
     "pk": 30,
     "fields": {
-      "item": 10,
-      "tipo": "S",
-      "quantidade": 1,
-      "data": "2026-09-22T06:07:55-03:00",
-      "observacao": "Venda online"
+      "item": 28,
+      "tipo": "E",
+      "quantidade": 30,
+      "data": "2026-09-07T09:00:00-03:00",
+      "observacao": "Entrada de lote inicial"
     }
   },
   {
     "model": "estoque.movimentacao",
     "pk": 31,
     "fields": {
-      "item": 12,
+      "item": 25,
       "tipo": "S",
-      "quantidade": 3,
-      "data": "2026-09-22T11:40:24-03:00",
-      "observacao": "Venda marketplace"
+      "quantidade": 2,
+      "data": "2026-09-08T10:00:00-03:00",
+      "observacao": "Venda loja"
     }
   },
   {
     "model": "estoque.movimentacao",
     "pk": 32,
     "fields": {
-      "item": 6,
-      "tipo": "E",
-      "quantidade": 30,
-      "data": "2026-09-22T13:00:00-03:00",
-      "observacao": "Entrada de lote inicial"
+      "item": 2,
+      "tipo": "S",
+      "quantidade": 8,
+      "data": "2026-09-09T09:00:00-03:00",
+      "observacao": "Venda loja"
     }
   },
   {
     "model": "estoque.movimentacao",
     "pk": 33,
     "fields": {
-      "item": 9,
-      "tipo": "E",
-      "quantidade": 27,
-      "data": "2026-09-22T13:00:00-03:00",
-      "observacao": "Entrada de lote inicial"
+      "item": 15,
+      "tipo": "S",
+      "quantidade": 11,
+      "data": "2026-09-09T10:00:00-03:00",
+      "observacao": "Venda online"
     }
   },
   {
     "model": "estoque.movimentacao",
     "pk": 34,
     "fields": {
-      "item": 23,
-      "tipo": "E",
-      "quantidade": 19,
-      "data": "2026-09-22T13:00:00-03:00",
-      "observacao": "Entrada de lote inicial"
+      "item": 21,
+      "tipo": "S",
+      "quantidade": 3,
+      "data": "2026-09-09T11:00:00-03:00",
+      "observacao": "Venda atacado"
     }
   },
   {
     "model": "estoque.movimentacao",
     "pk": 35,
     "fields": {
-      "item": 2,
-      "tipo": "E",
-      "quantidade": 14,
-      "data": "2026-09-22T16:00:00-03:00",
-      "observacao": "Entrada de lote inicial"
+      "item": 11,
+      "tipo": "S",
+      "quantidade": 5,
+      "data": "2026-09-10T10:00:00-03:00",
+      "observacao": "Venda loja"
     }
   },
   {
     "model": "estoque.movimentacao",
     "pk": 36,
     "fields": {
-      "item": 7,
+      "item": 30,
       "tipo": "S",
-      "quantidade": 13,
-      "data": "2026-09-23T03:35:46-03:00",
-      "observacao": "Venda loja"
+      "quantidade": 9,
+      "data": "2026-09-11T09:00:00-03:00",
+      "observacao": "Venda online"
     }
   },
   {
     "model": "estoque.movimentacao",
     "pk": 37,
     "fields": {
-      "item": 15,
+      "item": 19,
       "tipo": "S",
       "quantidade": 3,
-      "data": "2026-09-23T10:01:45-03:00",
-      "observacao": "Venda loja"
+      "data": "2026-09-11T10:00:00-03:00",
+      "observacao": "Venda online"
     }
   },
   {
     "model": "estoque.movimentacao",
     "pk": 38,
     "fields": {
-      "item": 13,
+      "item": 21,
       "tipo": "E",
-      "quantidade": 27,
-      "data": "2026-09-23T18:00:00-03:00",
-      "observacao": "Entrada de lote inicial"
+      "quantidade": 5,
+      "data": "2026-09-11T11:00:00-03:00",
+      "observacao": "Reposição de estoque"
     }
   },
   {
     "model": "estoque.movimentacao",
     "pk": 39,
     "fields": {
-      "item": 17,
-      "tipo": "S",
-      "quantidade": 3,
-      "data": "2026-09-23T22:08:39-03:00",
-      "observacao": "Venda loja"
+      "item": 11,
+      "tipo": "E",
+      "quantidade": 5,
+      "data": "2026-09-12T10:00:00-03:00",
+      "observacao": "Reposição de estoque"
     }
   },
   {
@@ -894,63 +964,63 @@
     "fields": {
       "item": 20,
       "tipo": "S",
-      "quantidade": 6,
-      "data": "2026-09-23T23:10:13-03:00",
-      "observacao": "Venda marketplace"
+      "quantidade": 2,
+      "data": "2026-09-12T12:00:00-03:00",
+      "observacao": "Venda atacado"
     }
   },
   {
     "model": "estoque.movimentacao",
     "pk": 41,
     "fields": {
-      "item": 26,
+      "item": 12,
       "tipo": "S",
-      "quantidade": 3,
-      "data": "2026-09-24T04:02:00-03:00",
-      "observacao": "Venda online"
+      "quantidade": 2,
+      "data": "2026-09-12T13:00:00-03:00",
+      "observacao": "Venda loja"
     }
   },
   {
     "model": "estoque.movimentacao",
     "pk": 42,
     "fields": {
-      "item": 22,
+      "item": 19,
       "tipo": "S",
-      "quantidade": 3,
-      "data": "2026-09-24T09:00:18-03:00",
-      "observacao": "Venda loja"
+      "quantidade": 21,
+      "data": "2026-09-13T11:00:00-03:00",
+      "observacao": "Venda em promoção"
     }
   },
   {
     "model": "estoque.movimentacao",
     "pk": 43,
     "fields": {
-      "item": 5,
+      "item": 11,
       "tipo": "S",
-      "quantidade": 4,
-      "data": "2026-09-25T19:53:25-03:00",
-      "observacao": "Venda marketplace"
+      "quantidade": 15,
+      "data": "2026-09-14T11:00:00-03:00",
+      "observacao": "Venda em promoção"
     }
   },
   {
     "model": "estoque.movimentacao",
     "pk": 44,
     "fields": {
-      "item": 4,
+      "item": 26,
       "tipo": "S",
-      "quantidade": 3,
-      "data": "2026-09-26T13:21:01-03:00",
-      "observacao": "Venda marketplace"
+      "quantidade": 9,
+      "data": "2026-09-14T11:00:00-03:00",
+      "observacao": "Venda atacado"
     }
   },
   {
     "model": "estoque.movimentacao",
     "pk": 45,
     "fields": {
-      "item": 13,
+      "item": 2,
       "tipo": "S",
       "quantidade": 7,
-      "data": "2026-09-29T08:21:27-03:00",
+      "data": "2026-09-14T13:00:00-03:00",
       "observacao": "Venda loja"
     }
   },
@@ -958,164 +1028,164 @@
     "model": "estoque.movimentacao",
     "pk": 46,
     "fields": {
-      "item": 9,
+      "item": 24,
       "tipo": "S",
-      "quantidade": 6,
-      "data": "2026-09-29T09:28:42-03:00",
-      "observacao": "Venda marketplace"
+      "quantidade": 11,
+      "data": "2026-09-14T14:00:00-03:00",
+      "observacao": "Venda atacado"
     }
   },
   {
     "model": "estoque.movimentacao",
     "pk": 47,
     "fields": {
-      "item": 7,
+      "item": 16,
       "tipo": "S",
-      "quantidade": 3,
-      "data": "2026-09-30T11:18:16-03:00",
-      "observacao": "Venda marketplace"
+      "quantidade": 2,
+      "data": "2026-09-15T09:00:00-03:00",
+      "observacao": "Venda atacado"
     }
   },
   {
     "model": "estoque.movimentacao",
     "pk": 48,
     "fields": {
-      "item": 21,
+      "item": 22,
       "tipo": "S",
-      "quantidade": 3,
-      "data": "2026-09-30T19:51:42-03:00",
-      "observacao": "Venda marketplace"
+      "quantidade": 11,
+      "data": "2026-09-15T10:00:00-03:00",
+      "observacao": "Venda online"
     }
   },
   {
     "model": "estoque.movimentacao",
     "pk": 49,
     "fields": {
-      "item": 5,
+      "item": 6,
       "tipo": "S",
       "quantidade": 4,
-      "data": "2026-10-01T04:39:34-03:00",
-      "observacao": "Venda marketplace"
+      "data": "2026-09-15T12:00:00-03:00",
+      "observacao": "Venda loja"
     }
   },
   {
     "model": "estoque.movimentacao",
     "pk": 50,
     "fields": {
-      "item": 28,
-      "tipo": "S",
-      "quantidade": 1,
-      "data": "2026-10-02T05:45:14-03:00",
-      "observacao": "Venda loja"
+      "item": 16,
+      "tipo": "E",
+      "quantidade": 5,
+      "data": "2026-09-16T09:00:00-03:00",
+      "observacao": "Reposição de estoque"
     }
   },
   {
     "model": "estoque.movimentacao",
     "pk": 51,
     "fields": {
-      "item": 30,
+      "item": 3,
       "tipo": "S",
-      "quantidade": 5,
-      "data": "2026-10-03T02:43:53-03:00",
-      "observacao": "Venda loja"
+      "quantidade": 7,
+      "data": "2026-09-16T11:00:00-03:00",
+      "observacao": "Venda atacado"
     }
   },
   {
     "model": "estoque.movimentacao",
     "pk": 52,
     "fields": {
-      "item": 18,
-      "tipo": "S",
+      "item": 6,
+      "tipo": "E",
       "quantidade": 6,
-      "data": "2026-10-04T02:01:51-03:00",
-      "observacao": "Venda online"
+      "data": "2026-09-16T12:00:00-03:00",
+      "observacao": "Reposição de estoque"
     }
   },
   {
     "model": "estoque.movimentacao",
     "pk": 53,
     "fields": {
-      "item": 8,
+      "item": 23,
       "tipo": "S",
-      "quantidade": 2,
-      "data": "2026-10-05T14:03:05-03:00",
-      "observacao": "Venda online"
+      "quantidade": 9,
+      "data": "2026-09-17T11:00:00-03:00",
+      "observacao": "Venda atacado"
     }
   },
   {
     "model": "estoque.movimentacao",
     "pk": 54,
     "fields": {
-      "item": 8,
-      "tipo": "E",
-      "quantidade": 12,
-      "data": "2026-10-05T17:03:05-03:00",
-      "observacao": "Reposição fornecedor"
+      "item": 9,
+      "tipo": "S",
+      "quantidade": 11,
+      "data": "2026-09-17T12:00:00-03:00",
+      "observacao": "Venda online"
     }
   },
   {
     "model": "estoque.movimentacao",
     "pk": 55,
     "fields": {
-      "item": 17,
+      "item": 28,
       "tipo": "S",
-      "quantidade": 4,
-      "data": "2026-10-06T09:41:59-03:00",
-      "observacao": "Venda loja"
+      "quantidade": 6,
+      "data": "2026-09-17T12:00:00-03:00",
+      "observacao": "Venda online"
     }
   },
   {
     "model": "estoque.movimentacao",
     "pk": 56,
     "fields": {
-      "item": 22,
+      "item": 8,
       "tipo": "S",
-      "quantidade": 2,
-      "data": "2026-10-06T18:00:29-03:00",
-      "observacao": "Venda loja"
+      "quantidade": 10,
+      "data": "2026-09-17T14:00:00-03:00",
+      "observacao": "Venda atacado"
     }
   },
   {
     "model": "estoque.movimentacao",
     "pk": 57,
     "fields": {
-      "item": 14,
+      "item": 17,
       "tipo": "S",
-      "quantidade": 5,
-      "data": "2026-10-07T00:04:36-03:00",
-      "observacao": "Venda online"
+      "quantidade": 12,
+      "data": "2026-09-17T14:00:00-03:00",
+      "observacao": "Venda atacado"
     }
   },
   {
     "model": "estoque.movimentacao",
     "pk": 58,
     "fields": {
-      "item": 9,
-      "tipo": "S",
-      "quantidade": 8,
-      "data": "2026-10-07T22:05:30-03:00",
-      "observacao": "Venda loja"
+      "item": 24,
+      "tipo": "E",
+      "quantidade": 11,
+      "data": "2026-09-17T14:00:00-03:00",
+      "observacao": "Reposição de estoque"
     }
   },
   {
     "model": "estoque.movimentacao",
     "pk": 59,
     "fields": {
-      "item": 9,
-      "tipo": "E",
-      "quantidade": 12,
-      "data": "2026-10-08T01:05:30-03:00",
-      "observacao": "Reposição fornecedor"
+      "item": 5,
+      "tipo": "S",
+      "quantidade": 11,
+      "data": "2026-09-18T10:00:00-03:00",
+      "observacao": "Venda loja"
     }
   },
   {
     "model": "estoque.movimentacao",
     "pk": 60,
     "fields": {
-      "item": 15,
+      "item": 18,
       "tipo": "S",
-      "quantidade": 6,
-      "data": "2026-10-08T03:25:06-03:00",
+      "quantidade": 8,
+      "data": "2026-09-18T10:00:00-03:00",
       "observacao": "Venda online"
     }
   },
@@ -1125,19 +1195,19 @@
     "fields": {
       "item": 14,
       "tipo": "S",
-      "quantidade": 3,
-      "data": "2026-10-08T05:10:53-03:00",
-      "observacao": "Venda loja"
+      "quantidade": 6,
+      "data": "2026-09-18T11:00:00-03:00",
+      "observacao": "Venda online"
     }
   },
   {
     "model": "estoque.movimentacao",
     "pk": 62,
     "fields": {
-      "item": 29,
+      "item": 4,
       "tipo": "S",
-      "quantidade": 1,
-      "data": "2026-10-08T12:29:32-03:00",
+      "quantidade": 11,
+      "data": "2026-09-18T12:00:00-03:00",
       "observacao": "Venda online"
     }
   },
@@ -1145,10 +1215,10 @@
     "model": "estoque.movimentacao",
     "pk": 63,
     "fields": {
-      "item": 17,
+      "item": 10,
       "tipo": "S",
-      "quantidade": 4,
-      "data": "2026-10-08T13:32:36-03:00",
+      "quantidade": 5,
+      "data": "2026-09-18T12:00:00-03:00",
       "observacao": "Venda loja"
     }
   },
@@ -1156,54 +1226,54 @@
     "model": "estoque.movimentacao",
     "pk": 64,
     "fields": {
-      "item": 17,
-      "tipo": "E",
-      "quantidade": 10,
-      "data": "2026-10-08T16:32:36-03:00",
-      "observacao": "Reposição fornecedor"
+      "item": 6,
+      "tipo": "S",
+      "quantidade": 27,
+      "data": "2026-09-18T13:00:00-03:00",
+      "observacao": "Venda em promoção"
     }
   },
   {
     "model": "estoque.movimentacao",
     "pk": 65,
     "fields": {
-      "item": 11,
+      "item": 30,
       "tipo": "S",
-      "quantidade": 11,
-      "data": "2026-10-09T17:39:14-03:00",
-      "observacao": "Venda loja"
+      "quantidade": 6,
+      "data": "2026-09-18T13:00:00-03:00",
+      "observacao": "Venda online"
     }
   },
   {
     "model": "estoque.movimentacao",
     "pk": 66,
     "fields": {
-      "item": 3,
+      "item": 2,
       "tipo": "S",
-      "quantidade": 5,
-      "data": "2026-10-10T22:00:01-03:00",
-      "observacao": "Venda marketplace"
+      "quantidade": 9,
+      "data": "2026-09-18T16:00:00-03:00",
+      "observacao": "Venda atacado"
     }
   },
   {
     "model": "estoque.movimentacao",
     "pk": 67,
     "fields": {
-      "item": 4,
+      "item": 29,
       "tipo": "S",
-      "quantidade": 5,
-      "data": "2026-10-11T07:10:13-03:00",
-      "observacao": "Venda marketplace"
+      "quantidade": 7,
+      "data": "2026-09-19T09:00:00-03:00",
+      "observacao": "Venda online"
     }
   },
   {
     "model": "estoque.movimentacao",
     "pk": 68,
     "fields": {
-      "item": 17,
+      "item": 15,
       "tipo": "S",
-      "quantidade": 1,
-      "data": "2026-10-12T10:15:03-03:00",
+      "quantidade": 11,
+      "data": "2026-09-19T15:00:00-03:00",
       "observacao": "Venda loja"
     }
   },
@@ -1213,41 +1283,41 @@
     "fields": {
       "item": 27,
       "tipo": "S",
-      "quantidade": 1,
-      "data": "2026-10-12T22:25:31-03:00",
-      "observacao": "Venda marketplace"
+      "quantidade": 7,
+      "data": "2026-09-20T09:00:00-03:00",
+      "observacao": "Venda atacado"
     }
   },
   {
     "model": "estoque.movimentacao",
     "pk": 70,
     "fields": {
-      "item": 1,
+      "item": 13,
       "tipo": "S",
-      "quantidade": 17,
-      "data": "2026-10-14T12:36:35-03:00",
-      "observacao": "Venda marketplace"
+      "quantidade": 5,
+      "data": "2026-09-20T14:00:00-03:00",
+      "observacao": "Venda online"
     }
   },
   {
     "model": "estoque.movimentacao",
     "pk": 71,
     "fields": {
-      "item": 13,
-      "tipo": "S",
-      "quantidade": 17,
-      "data": "2026-10-14T19:52:23-03:00",
-      "observacao": "Venda marketplace"
+      "item": 17,
+      "tipo": "E",
+      "quantidade": 6,
+      "data": "2026-09-20T14:00:00-03:00",
+      "observacao": "Reposição de estoque"
     }
   },
   {
     "model": "estoque.movimentacao",
     "pk": 72,
     "fields": {
-      "item": 27,
+      "item": 26,
       "tipo": "S",
-      "quantidade": 6,
-      "data": "2026-10-14T21:09:19-03:00",
+      "quantidade": 9,
+      "data": "2026-09-21T11:00:00-03:00",
       "observacao": "Venda online"
     }
   },
@@ -1255,32 +1325,32 @@
     "model": "estoque.movimentacao",
     "pk": 73,
     "fields": {
-      "item": 13,
-      "tipo": "E",
-      "quantidade": 12,
-      "data": "2026-10-14T22:52:23-03:00",
-      "observacao": "Reposição fornecedor"
+      "item": 7,
+      "tipo": "S",
+      "quantidade": 10,
+      "data": "2026-09-21T12:00:00-03:00",
+      "observacao": "Venda loja"
     }
   },
   {
     "model": "estoque.movimentacao",
     "pk": 74,
     "fields": {
-      "item": 27,
-      "tipo": "E",
-      "quantidade": 15,
-      "data": "2026-10-15T00:09:19-03:00",
-      "observacao": "Reposição fornecedor"
+      "item": 22,
+      "tipo": "S",
+      "quantidade": 11,
+      "data": "2026-09-21T12:00:00-03:00",
+      "observacao": "Venda online"
     }
   },
   {
     "model": "estoque.movimentacao",
     "pk": 75,
     "fields": {
-      "item": 4,
+      "item": 25,
       "tipo": "S",
-      "quantidade": 2,
-      "data": "2026-10-16T04:29:03-03:00",
+      "quantidade": 9,
+      "data": "2026-09-21T13:00:00-03:00",
       "observacao": "Venda loja"
     }
   },
@@ -1288,11 +1358,11 @@
     "model": "estoque.movimentacao",
     "pk": 76,
     "fields": {
-      "item": 4,
+      "item": 13,
       "tipo": "E",
-      "quantidade": 15,
-      "data": "2026-10-16T07:29:03-03:00",
-      "observacao": "Reposição fornecedor"
+      "quantidade": 13,
+      "data": "2026-09-21T14:00:00-03:00",
+      "observacao": "Reposição de estoque"
     }
   },
   {
@@ -1300,31 +1370,31 @@
     "pk": 77,
     "fields": {
       "item": 2,
-      "tipo": "S",
-      "quantidade": 5,
-      "data": "2026-10-17T04:29:06-03:00",
-      "observacao": "Venda marketplace"
+      "tipo": "E",
+      "quantidade": 6,
+      "data": "2026-09-21T16:00:00-03:00",
+      "observacao": "Reposição de estoque"
     }
   },
   {
     "model": "estoque.movimentacao",
     "pk": 78,
     "fields": {
-      "item": 5,
+      "item": 15,
       "tipo": "S",
-      "quantidade": 6,
-      "data": "2026-10-17T16:14:48-03:00",
-      "observacao": "Venda marketplace"
+      "quantidade": 13,
+      "data": "2026-09-21T16:00:00-03:00",
+      "observacao": "Venda em promoção"
     }
   },
   {
     "model": "estoque.movimentacao",
     "pk": 79,
     "fields": {
-      "item": 18,
+      "item": 1,
       "tipo": "S",
-      "quantidade": 3,
-      "data": "2026-10-18T03:11:43-03:00",
+      "quantidade": 2,
+      "data": "2026-09-22T10:00:00-03:00",
       "observacao": "Venda online"
     }
   },
@@ -1332,21 +1402,21 @@
     "model": "estoque.movimentacao",
     "pk": 80,
     "fields": {
-      "item": 18,
-      "tipo": "E",
-      "quantidade": 12,
-      "data": "2026-10-18T06:11:43-03:00",
-      "observacao": "Reposição fornecedor"
+      "item": 4,
+      "tipo": "S",
+      "quantidade": 11,
+      "data": "2026-09-22T13:00:00-03:00",
+      "observacao": "Venda loja"
     }
   },
   {
     "model": "estoque.movimentacao",
     "pk": 81,
     "fields": {
-      "item": 18,
+      "item": 8,
       "tipo": "S",
-      "quantidade": 4,
-      "data": "2026-10-18T06:37:35-03:00",
+      "quantidade": 5,
+      "data": "2026-09-22T14:00:00-03:00",
       "observacao": "Venda online"
     }
   },
@@ -1354,65 +1424,65 @@
     "model": "estoque.movimentacao",
     "pk": 82,
     "fields": {
-      "item": 20,
-      "tipo": "S",
-      "quantidade": 3,
-      "data": "2026-10-19T09:53:23-03:00",
-      "observacao": "Venda marketplace"
+      "item": 26,
+      "tipo": "E",
+      "quantidade": 7,
+      "data": "2026-09-23T11:00:00-03:00",
+      "observacao": "Reposição de estoque"
     }
   },
   {
     "model": "estoque.movimentacao",
     "pk": 83,
     "fields": {
-      "item": 28,
+      "item": 20,
       "tipo": "S",
-      "quantidade": 1,
-      "data": "2026-10-19T11:24:00-03:00",
-      "observacao": "Venda loja"
+      "quantidade": 9,
+      "data": "2026-09-23T12:00:00-03:00",
+      "observacao": "Venda online"
     }
   },
   {
     "model": "estoque.movimentacao",
     "pk": 84,
     "fields": {
-      "item": 20,
-      "tipo": "E",
-      "quantidade": 15,
-      "data": "2026-10-19T12:53:23-03:00",
-      "observacao": "Reposição fornecedor"
+      "item": 2,
+      "tipo": "S",
+      "quantidade": 16,
+      "data": "2026-09-23T17:00:00-03:00",
+      "observacao": "Venda em promoção"
     }
   },
   {
     "model": "estoque.movimentacao",
     "pk": 85,
     "fields": {
-      "item": 9,
-      "tipo": "S",
-      "quantidade": 8,
-      "data": "2026-10-19T13:35:49-03:00",
-      "observacao": "Venda online"
+      "item": 8,
+      "tipo": "E",
+      "quantidade": 7,
+      "data": "2026-09-24T14:00:00-03:00",
+      "observacao": "Reposição de estoque"
     }
   },
   {
     "model": "estoque.movimentacao",
     "pk": 86,
     "fields": {
-      "item": 1,
+      "item": 27,
       "tipo": "S",
-      "quantidade": 4,
-      "data": "2026-10-22T10:51:22-03:00",
-      "observacao": "Venda loja"
+      "quantidade": 7,
+      "data": "2026-09-25T10:00:00-03:00",
+      "observacao": "Venda online"
     }
   },
   {
     "model": "estoque.movimentacao",
     "pk": 87,
     "fields": {
-      "item": 15,
+      "item": 13,
       "tipo": "S",
-      "quantidade": 1,
-      "data": "2026-10-22T14:02:33-03:00",
+      "quantidade": 6,
+      "data": "2026-09-25T16:00:00-03:00",
       "observacao": "Venda online"
     }
   },
@@ -1420,77 +1490,77 @@
     "model": "estoque.movimentacao",
     "pk": 88,
     "fields": {
-      "item": 23,
+      "item": 18,
       "tipo": "S",
-      "quantidade": 3,
-      "data": "2026-10-22T17:13:11-03:00",
-      "observacao": "Venda loja"
+      "quantidade": 12,
+      "data": "2026-09-26T10:00:00-03:00",
+      "observacao": "Venda online"
     }
   },
   {
     "model": "estoque.movimentacao",
     "pk": 89,
     "fields": {
-      "item": 26,
+      "item": 14,
       "tipo": "S",
-      "quantidade": 2,
-      "data": "2026-10-23T00:45:04-03:00",
-      "observacao": "Venda online"
+      "quantidade": 9,
+      "data": "2026-09-26T15:00:00-03:00",
+      "observacao": "Venda loja"
     }
   },
   {
     "model": "estoque.movimentacao",
     "pk": 90,
     "fields": {
-      "item": 11,
+      "item": 28,
       "tipo": "S",
-      "quantidade": 5,
-      "data": "2026-10-23T11:40:19-03:00",
-      "observacao": "Venda marketplace"
+      "quantidade": 9,
+      "data": "2026-09-26T15:00:00-03:00",
+      "observacao": "Venda online"
     }
   },
   {
     "model": "estoque.movimentacao",
     "pk": 91,
     "fields": {
-      "item": 11,
+      "item": 1,
       "tipo": "E",
-      "quantidade": 10,
-      "data": "2026-10-23T14:40:19-03:00",
-      "observacao": "Reposição fornecedor"
+      "quantidade": 11,
+      "data": "2026-09-27T10:00:00-03:00",
+      "observacao": "Reposição de estoque"
     }
   },
   {
     "model": "estoque.movimentacao",
     "pk": 92,
     "fields": {
-      "item": 1,
-      "tipo": "S",
-      "quantidade": 3,
-      "data": "2026-10-25T00:05:53-03:00",
-      "observacao": "Venda marketplace"
+      "item": 20,
+      "tipo": "E",
+      "quantidade": 12,
+      "data": "2026-09-27T12:00:00-03:00",
+      "observacao": "Reposição de estoque"
     }
   },
   {
     "model": "estoque.movimentacao",
     "pk": 93,
     "fields": {
-      "item": 3,
+      "item": 29,
       "tipo": "S",
-      "quantidade": 2,
-      "data": "2026-10-25T02:18:29-03:00",
-      "observacao": "Venda loja"
+      "quantidade": 4,
+      "data": "2026-09-27T14:00:00-03:00",
+      "observacao": "Venda atacado"
     }
   },
   {
     "model": "estoque.movimentacao",
     "pk": 94,
     "fields": {
-      "item": 3,
-      "tipo": "E",
+      "item": 23,
+      "tipo": "S",
       "quantidade": 10,
-      "data": "2026-10-25T05:18:29-03:00",
-      "observacao": "Reposição fornecedor"
+      "data": "2026-09-28T15:00:00-03:00",
+      "observacao": "Venda loja"
     }
   },
   {
@@ -1498,43 +1568,43 @@
     "pk": 95,
     "fields": {
       "item": 29,
-      "tipo": "S",
-      "quantidade": 2,
-      "data": "2026-10-25T06:27:01-03:00",
-      "observacao": "Venda marketplace"
+      "tipo": "E",
+      "quantidade": 12,
+      "data": "2026-09-29T14:00:00-03:00",
+      "observacao": "Reposição de estoque"
     }
   },
   {
     "model": "estoque.movimentacao",
     "pk": 96,
     "fields": {
-      "item": 12,
+      "item": 9,
       "tipo": "S",
-      "quantidade": 5,
-      "data": "2026-10-25T19:55:12-03:00",
-      "observacao": "Venda loja"
+      "quantidade": 3,
+      "data": "2026-09-29T17:00:00-03:00",
+      "observacao": "Venda atacado"
     }
   },
   {
     "model": "estoque.movimentacao",
     "pk": 97,
     "fields": {
-      "item": 8,
-      "tipo": "S",
-      "quantidade": 6,
-      "data": "2026-10-26T05:00:01-03:00",
-      "observacao": "Venda loja"
+      "item": 13,
+      "tipo": "E",
+      "quantidade": 12,
+      "data": "2026-09-30T16:00:00-03:00",
+      "observacao": "Reposição de estoque"
     }
   },
   {
     "model": "estoque.movimentacao",
     "pk": 98,
     "fields": {
-      "item": 29,
-      "tipo": "S",
-      "quantidade": 3,
-      "data": "2026-10-26T14:07:24-03:00",
-      "observacao": "Venda online"
+      "item": 9,
+      "tipo": "E",
+      "quantidade": 5,
+      "data": "2026-09-30T17:00:00-03:00",
+      "observacao": "Reposição de estoque"
     }
   },
   {
@@ -1543,52 +1613,52 @@
     "fields": {
       "item": 16,
       "tipo": "S",
-      "quantidade": 1,
-      "data": "2026-10-26T16:28:40-03:00",
-      "observacao": "Venda marketplace"
+      "quantidade": 11,
+      "data": "2026-10-01T14:00:00-03:00",
+      "observacao": "Venda atacado"
     }
   },
   {
     "model": "estoque.movimentacao",
     "pk": 100,
     "fields": {
-      "item": 29,
-      "tipo": "E",
-      "quantidade": 15,
-      "data": "2026-10-26T17:07:24-03:00",
-      "observacao": "Reposição fornecedor"
+      "item": 22,
+      "tipo": "S",
+      "quantidade": 3,
+      "data": "2026-10-01T16:00:00-03:00",
+      "observacao": "Venda online"
     }
   },
   {
     "model": "estoque.movimentacao",
     "pk": 101,
     "fields": {
-      "item": 15,
+      "item": 24,
       "tipo": "S",
-      "quantidade": 3,
-      "data": "2026-10-27T00:19:54-03:00",
-      "observacao": "Venda marketplace"
+      "quantidade": 2,
+      "data": "2026-10-02T14:00:00-03:00",
+      "observacao": "Venda online"
     }
   },
   {
     "model": "estoque.movimentacao",
     "pk": 102,
     "fields": {
-      "item": 24,
-      "tipo": "S",
-      "quantidade": 3,
-      "data": "2026-10-27T03:39:58-03:00",
-      "observacao": "Venda marketplace"
+      "item": 22,
+      "tipo": "E",
+      "quantidade": 14,
+      "data": "2026-10-02T16:00:00-03:00",
+      "observacao": "Reposição de estoque"
     }
   },
   {
     "model": "estoque.movimentacao",
     "pk": 103,
     "fields": {
-      "item": 21,
+      "item": 25,
       "tipo": "S",
-      "quantidade": 6,
-      "data": "2026-10-28T00:44:38-03:00",
+      "quantidade": 3,
+      "data": "2026-10-04T17:00:00-03:00",
       "observacao": "Venda online"
     }
   },
@@ -1596,109 +1666,109 @@
     "model": "estoque.movimentacao",
     "pk": 104,
     "fields": {
-      "item": 6,
+      "item": 23,
       "tipo": "S",
-      "quantidade": 5,
-      "data": "2026-10-28T09:32:07-03:00",
-      "observacao": "Venda marketplace"
+      "quantidade": 4,
+      "data": "2026-10-04T19:00:00-03:00",
+      "observacao": "Venda atacado"
     }
   },
   {
     "model": "estoque.movimentacao",
     "pk": 105,
     "fields": {
-      "item": 20,
-      "tipo": "S",
-      "quantidade": 4,
-      "data": "2026-10-28T13:13:16-03:00",
-      "observacao": "Venda online"
+      "item": 24,
+      "tipo": "E",
+      "quantidade": 10,
+      "data": "2026-10-05T14:00:00-03:00",
+      "observacao": "Reposição de estoque"
     }
   },
   {
     "model": "estoque.movimentacao",
     "pk": 106,
     "fields": {
-      "item": 26,
+      "item": 14,
       "tipo": "S",
-      "quantidade": 3,
-      "data": "2026-10-28T21:15:20-03:00",
-      "observacao": "Venda online"
+      "quantidade": 2,
+      "data": "2026-10-06T15:00:00-03:00",
+      "observacao": "Venda atacado"
     }
   },
   {
     "model": "estoque.movimentacao",
     "pk": 107,
     "fields": {
-      "item": 6,
+      "item": 9,
       "tipo": "S",
-      "quantidade": 11,
-      "data": "2026-10-29T17:21:08-03:00",
-      "observacao": "Venda loja"
+      "quantidade": 5,
+      "data": "2026-10-06T20:00:00-03:00",
+      "observacao": "Venda online"
     }
   },
   {
     "model": "estoque.movimentacao",
     "pk": 108,
     "fields": {
-      "item": 25,
+      "item": 1,
       "tipo": "S",
-      "quantidade": 1,
-      "data": "2026-10-29T23:48:37-03:00",
-      "observacao": "Venda online"
+      "quantidade": 10,
+      "data": "2026-10-07T14:00:00-03:00",
+      "observacao": "Venda loja"
     }
   },
   {
     "model": "estoque.movimentacao",
     "pk": 109,
     "fields": {
-      "item": 6,
-      "tipo": "S",
-      "quantidade": 4,
-      "data": "2026-10-30T10:00:02-03:00",
-      "observacao": "Venda marketplace"
+      "item": 1,
+      "tipo": "E",
+      "quantidade": 7,
+      "data": "2026-10-08T14:00:00-03:00",
+      "observacao": "Reposição de estoque"
     }
   },
   {
     "model": "estoque.movimentacao",
     "pk": 110,
     "fields": {
-      "item": 3,
-      "tipo": "S",
-      "quantidade": 7,
-      "data": "2026-10-30T23:15:10-03:00",
-      "observacao": "Venda online"
+      "item": 9,
+      "tipo": "E",
+      "quantidade": 10,
+      "data": "2026-10-09T20:00:00-03:00",
+      "observacao": "Reposição de estoque"
     }
   },
   {
     "model": "estoque.movimentacao",
     "pk": 111,
     "fields": {
-      "item": 29,
+      "item": 28,
       "tipo": "S",
-      "quantidade": 4,
-      "data": "2026-10-31T17:16:25-03:00",
-      "observacao": "Venda loja"
+      "quantidade": 6,
+      "data": "2026-10-10T19:00:00-03:00",
+      "observacao": "Venda online"
     }
   },
   {
     "model": "estoque.movimentacao",
     "pk": 112,
     "fields": {
-      "item": 21,
+      "item": 24,
       "tipo": "S",
-      "quantidade": 2,
-      "data": "2026-10-31T23:35:29-03:00",
-      "observacao": "Venda marketplace"
+      "quantidade": 4,
+      "data": "2026-10-12T18:00:00-03:00",
+      "observacao": "Venda atacado"
     }
   },
   {
     "model": "estoque.movimentacao",
     "pk": 113,
     "fields": {
-      "item": 25,
+      "item": 29,
       "tipo": "S",
-      "quantidade": 20,
-      "data": "2026-11-01T06:21:26-03:00",
+      "quantidade": 3,
+      "data": "2026-10-13T15:00:00-03:00",
       "observacao": "Venda loja"
     }
   },
@@ -1706,264 +1776,33 @@
     "model": "estoque.movimentacao",
     "pk": 114,
     "fields": {
-      "item": 12,
-      "tipo": "S",
-      "quantidade": 2,
-      "data": "2026-11-01T09:18:36-03:00",
-      "observacao": "Venda marketplace"
+      "item": 28,
+      "tipo": "E",
+      "quantidade": 12,
+      "data": "2026-10-14T19:00:00-03:00",
+      "observacao": "Reposição de estoque"
     }
   },
   {
     "model": "estoque.movimentacao",
     "pk": 115,
     "fields": {
-      "item": 25,
-      "tipo": "E",
-      "quantidade": 10,
-      "data": "2026-11-01T09:21:26-03:00",
-      "observacao": "Reposição fornecedor"
+      "item": 28,
+      "tipo": "S",
+      "quantidade": 12,
+      "data": "2026-10-16T20:00:00-03:00",
+      "observacao": "Venda em promoção"
     }
   },
   {
     "model": "estoque.movimentacao",
     "pk": 116,
     "fields": {
-      "item": 12,
-      "tipo": "E",
-      "quantidade": 15,
-      "data": "2026-11-01T12:18:36-03:00",
-      "observacao": "Reposição fornecedor"
-    }
-  },
-  {
-    "model": "estoque.movimentacao",
-    "pk": 117,
-    "fields": {
-      "item": 19,
-      "tipo": "S",
-      "quantidade": 21,
-      "data": "2026-11-01T19:06:27-03:00",
-      "observacao": "Venda marketplace"
-    }
-  },
-  {
-    "model": "estoque.movimentacao",
-    "pk": 118,
-    "fields": {
-      "item": 10,
-      "tipo": "S",
-      "quantidade": 9,
-      "data": "2026-11-01T22:38:26-03:00",
-      "observacao": "Venda online"
-    }
-  },
-  {
-    "model": "estoque.movimentacao",
-    "pk": 119,
-    "fields": {
-      "item": 28,
-      "tipo": "S",
-      "quantidade": 1,
-      "data": "2026-11-01T23:53:30-03:00",
-      "observacao": "Venda online"
-    }
-  },
-  {
-    "model": "estoque.movimentacao",
-    "pk": 120,
-    "fields": {
-      "item": 27,
-      "tipo": "S",
-      "quantidade": 10,
-      "data": "2026-11-02T08:06:39-03:00",
-      "observacao": "Venda online"
-    }
-  },
-  {
-    "model": "estoque.movimentacao",
-    "pk": 121,
-    "fields": {
-      "item": 30,
-      "tipo": "S",
-      "quantidade": 19,
-      "data": "2026-11-04T11:25:33-03:00",
-      "observacao": "Venda online"
-    }
-  },
-  {
-    "model": "estoque.movimentacao",
-    "pk": 122,
-    "fields": {
-      "item": 2,
-      "tipo": "S",
-      "quantidade": 3,
-      "data": "2026-11-04T13:44:49-03:00",
-      "observacao": "Venda loja"
-    }
-  },
-  {
-    "model": "estoque.movimentacao",
-    "pk": 123,
-    "fields": {
-      "item": 7,
-      "tipo": "S",
-      "quantidade": 7,
-      "data": "2026-11-04T23:48:08-03:00",
-      "observacao": "Venda loja"
-    }
-  },
-  {
-    "model": "estoque.movimentacao",
-    "pk": 124,
-    "fields": {
-      "item": 19,
-      "tipo": "S",
-      "quantidade": 1,
-      "data": "2026-11-05T10:43:45-03:00",
-      "observacao": "Venda online"
-    }
-  },
-  {
-    "model": "estoque.movimentacao",
-    "pk": 125,
-    "fields": {
-      "item": 19,
-      "tipo": "E",
-      "quantidade": 10,
-      "data": "2026-11-05T13:43:45-03:00",
-      "observacao": "Reposição fornecedor"
-    }
-  },
-  {
-    "model": "estoque.movimentacao",
-    "pk": 126,
-    "fields": {
-      "item": 4,
-      "tipo": "S",
-      "quantidade": 7,
-      "data": "2026-11-05T16:23:39-03:00",
-      "observacao": "Venda online"
-    }
-  },
-  {
-    "model": "estoque.movimentacao",
-    "pk": 127,
-    "fields": {
       "item": 24,
-      "tipo": "S",
-      "quantidade": 2,
-      "data": "2026-11-05T23:10:19-03:00",
-      "observacao": "Venda loja"
-    }
-  },
-  {
-    "model": "estoque.movimentacao",
-    "pk": 128,
-    "fields": {
-      "item": 24,
-      "tipo": "S",
-      "quantidade": 2,
-      "data": "2026-11-06T22:12:32-03:00",
-      "observacao": "Venda loja"
-    }
-  },
-  {
-    "model": "estoque.movimentacao",
-    "pk": 129,
-    "fields": {
-      "item": 22,
-      "tipo": "S",
-      "quantidade": 4,
-      "data": "2026-11-06T22:19:15-03:00",
-      "observacao": "Venda online"
-    }
-  },
-  {
-    "model": "estoque.movimentacao",
-    "pk": 130,
-    "fields": {
-      "item": 22,
       "tipo": "E",
-      "quantidade": 10,
-      "data": "2026-11-07T01:19:15-03:00",
-      "observacao": "Reposição fornecedor"
-    }
-  },
-  {
-    "model": "estoque.movimentacao",
-    "pk": 131,
-    "fields": {
-      "item": 7,
-      "tipo": "S",
-      "quantidade": 1,
-      "data": "2026-11-07T14:33:07-03:00",
-      "observacao": "Venda loja"
-    }
-  },
-  {
-    "model": "estoque.movimentacao",
-    "pk": 132,
-    "fields": {
-      "item": 22,
-      "tipo": "S",
-      "quantidade": 9,
-      "data": "2026-11-08T21:25:10-03:00",
-      "observacao": "Venda online"
-    }
-  },
-  {
-    "model": "estoque.movimentacao",
-    "pk": 133,
-    "fields": {
-      "item": 12,
-      "tipo": "S",
-      "quantidade": 5,
-      "data": "2026-11-10T01:01:35-03:00",
-      "observacao": "Venda loja"
-    }
-  },
-  {
-    "model": "estoque.movimentacao",
-    "pk": 134,
-    "fields": {
-      "item": 21,
-      "tipo": "S",
-      "quantidade": 5,
-      "data": "2026-11-11T08:36:06-03:00",
-      "observacao": "Venda marketplace"
-    }
-  },
-  {
-    "model": "estoque.movimentacao",
-    "pk": 135,
-    "fields": {
-      "item": 6,
-      "tipo": "S",
-      "quantidade": 1,
-      "data": "2026-11-11T17:20:40-03:00",
-      "observacao": "Venda loja"
-    }
-  },
-  {
-    "model": "estoque.movimentacao",
-    "pk": 136,
-    "fields": {
-      "item": 24,
-      "tipo": "S",
-      "quantidade": 2,
-      "data": "2026-11-12T13:51:50-03:00",
-      "observacao": "Venda loja"
-    }
-  },
-  {
-    "model": "estoque.movimentacao",
-    "pk": 137,
-    "fields": {
-      "item": 23,
-      "tipo": "S",
-      "quantidade": 5,
-      "data": "2026-11-13T03:38:09-03:00",
-      "observacao": "Venda loja"
+      "quantidade": 13,
+      "data": "2026-10-17T18:00:00-03:00",
+      "observacao": "Reposição de estoque"
     }
   }
 ]

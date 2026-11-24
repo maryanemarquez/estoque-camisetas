@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% comment %}
+tecido_form.html — formulário compartilhado por criar e editar tecido.
+Se a view enviou 'tecido', é edição; senão, é criação.
+{% endcomment %}
+
+{% block titulo %}{{ block.super }} - {% if tecido %}Editar tecido{% else %}Novo tecido{% endif %}{% endblock %}
+
+{% block conteudo %}
+<h1>{% if tecido %}Editar tecido{% else %}Novo tecido{% endif %}</h1>
+
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Salvar</button>
+    <a href="{% url 'lista_tecidos' %}" class="botao secundario">Cancelar</a>
+</form>
+{% endblock %}
+
+# Implementação "Tecido"  - Realização da Prova. #
