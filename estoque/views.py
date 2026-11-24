@@ -13,8 +13,8 @@
 from django.db.models import Q
 from django.shortcuts import get_object_or_404, redirect, render
 
-from .forms import CategoriaForm, ItemForm, MovimentacaoForm
-from .models import Categoria, Item, Movimentacao
+from .forms import CategoriaForm, ItemForm, MovimentacaoForm, TecidoForm
+from .models import Categoria, Item, Movimentacao, Tecido
 
 # Ordenações permitidas na lista de camisetas (o '-' inverte a ordem)
 ORDENACOES = ['nome', 'codigo', '-codigo', 'preco', '-preco']
@@ -208,3 +208,53 @@ def criar_movimentacao(request):
         form = MovimentacaoForm(initial=inicial)
     contexto = {'form': form}
     return render(request, 'estoque/movimentacao_form.html', contexto)
+
+# Implementação "Tecido"  - Realização da Prova. #
+
+def lista_tecidos(request):
+    """Lista os tecidos em ordem alfabética."""
+    tecidos = Tecido.objects.all().order_by('nome')
+    contexto = {'tecidos': tecidos}
+    return render(request, 'estoque/tecido_lista.html', contexto)
+
+def criar_tecido(request):
+    """Cadastra um tecido (GET: form vazio; POST: valida e salva)."""
+    if request.method == 'POST':
+        form = TecidoForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('lista_tecidos')
+    else:
+        form = TecidoForm()
+    contexto = {'form': form}
+    return render(request, 'estoque/tecido_form.html', contexto)
+
+def excluir_tecido(request, pk):
+    """Exclui um tecido (GET: confirma e avisa do CASCADE; só o POST apaga)."""
+    tecido = get_object_or_404(Tecido, pk=pk)
+    if request.method == 'POST':
+        tecido.delete()
+        return redirect('lista_tecidos')
+    contexto = {'tecido': tecido}
+    return render(request, 'estoque/tecido_confirmar_exclusao.html', contexto)
+
+
+def detalhar_tecido(request, pk):
+    """Mostra os dados de um tecido."""
+    tecido = get_object_or_404(Tecido, pk=pk)
+    contexto = {'tecido': tecido}
+    return render(request, 'estoque/tecido_detalhe.html', contexto)
+
+
+def editar_tecido(request, pk):
+    """Edita um tecido (GET: form preenchido; POST: valida e salva)."""
+    tecido = get_object_or_404(Tecido, pk=pk)
+    if request.method == 'POST':
+        form = TecidoForm(request.POST, instance=tecido)
+        if form.is_valid():
+            form.save()
+            return redirect('detalhar_tecido', pk=tecido.pk)
+    else:
+        form = TecidoForm(instance=tecido)
+    contexto = {'form': form, 'tecido': tecido}
+    return render(request, 'estoque/tecido_form.html', contexto)

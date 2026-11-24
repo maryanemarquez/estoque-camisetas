@@ -28,4 +28,12 @@ urlpatterns = [
     path('movimentacoes/', views.lista_movimentacoes, name='lista_movimentacoes'),
     path('movimentacoes/nova/', views.criar_movimentacao, name='criar_movimentacao'),
     path('movimentacoes/<int:pk>/', views.detalhar_movimentacao, name='detalhar_movimentacao'),
+
+    # Implementação "Tecido"  - Realização da Prova. #
+    path('tecidos/', views.lista_tecidos, name='lista_tecidos'),
+    path('tecidos/<int:pk>/excluir/', views.excluir_tecido, name='excluir_tecido'),
+    path('tecidos/nova/', views.criar_tecido, name='criar_tecido'),
+    path('tecidos/<int:pk>/', views.detalhar_tecido, name='detalhar_tecido'),
+    path('tecidos/<int:pk>/editar/', views.editar_tecido, name='editar_tecido'),
+
 ]

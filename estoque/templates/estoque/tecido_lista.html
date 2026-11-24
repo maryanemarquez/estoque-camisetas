@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% comment %}
+tecido_lista.html — tecidos em grade de cartões (Etapa 6),
+com o prefixo de cada um.
+{% endcomment %}
+
+{% block titulo %}{{ block.super }} - Tecidos{% endblock %}
+
+{% block conteudo %}
+<h1>Tecidos</h1>
+<p class="subtitulo">{{ tecidos|length }} tecido{{ tecidos|length|pluralize }}</p>
+
+<a href="{% url 'criar_tecido' %}" class="botao">+ Novo tecido</a>
+
+<div class="grade-tecidos">
+    {% for tecido in tecidos %}
+        <div class="cartao-tecido">
+            <h2><a href="{% url 'detalhar_tecido' tecido.pk %}">{{ tecido.nome }}</a></h2>
+            <p>Prefixo: {{ tecido.prefixo }}</p>
+            <a href="{% url 'editar_tecido' tecido.pk %}">Editar</a> |
+            <a href="{% url 'excluir_tecido' tecido.pk %}">Excluir</a>
+        </div>
+    {% empty %}
+        <p class="vazio">Nenhum tecido cadastrado.</p>
+    {% endfor %}
+</div>
+{% endblock %}
+
+# Implementação "Tecido"  - Realização da Prova. #

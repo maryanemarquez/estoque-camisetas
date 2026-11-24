@@ -9,7 +9,7 @@
 from django import forms
 from django.db.models import Q
 
-from .models import Categoria, Item, Movimentacao
+from .models import Categoria, Item, Movimentacao, Tecido
 
 
 class ItemForm(forms.ModelForm):
@@ -143,3 +143,27 @@ class MovimentacaoForm(forms.ModelForm):
         elif tipo == 'S' and quantidade > item.saldo:
             self.add_error('quantidade', f'Saldo insuficiente: disponível {item.saldo}.')
         return dados
+
+# Implementação "Tecido"  - Realização da Prova. #
+
+class TecidoForm(forms.ModelForm):
+    """Formulário de tecido (usado em criar e editar)."""
+
+    class Meta:
+        model = Tecido
+        fields = ['nome', 'prefixo']
+        labels = {
+            'nome': 'Nome do tecido',
+            'prefixo': 'Prefixo do código (3 letras)',
+        }
+        widgets = {
+            'nome': forms.TextInput(attrs={'placeholder': 'Ex.: Algodão'}),
+            'prefixo': forms.TextInput(attrs={'placeholder': 'Ex.: ALG', 'maxlength': 3}),
+        }
+
+    def clean_prefixo(self):
+        """Exige 3 letras (A-Z) e grava em maiúsculas."""
+        prefixo = self.cleaned_data['prefixo'].strip().upper()
+        if len(prefixo) != 3 or not prefixo.isascii() or not prefixo.isalpha():
+            raise forms.ValidationError('Informe exatamente 3 letras, sem números ou acentos.')
+        return prefixo

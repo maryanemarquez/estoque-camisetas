@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% comment %}
+tecido_detalhe.html — dados do tecido.
+{% endcomment %}
+
+{% block titulo %}{{ block.super }} - {{ tecido.nome }}{% endblock %}
+
+{% block conteudo %}
+<h1>{{ tecido.nome }}</h1>
+
+<p><strong>Prefixo:</strong> {{ tecido.prefixo }}</p>
+
+<div class="acoes">
+    <a href="{% url 'editar_tecido' tecido.pk %}" class="botao">Editar</a>
+    <a href="{% url 'excluir_tecido' tecido.pk %}" class="botao perigo">Excluir</a>
+    <a href="{% url 'lista_tecidos' %}" class="botao secundario">Voltar</a>
+</div>
+{% endblock %}
+
+# Implementação "Tecido"  - Realização da Prova. #

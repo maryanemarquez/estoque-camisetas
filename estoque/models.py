@@ -95,3 +95,18 @@ class Movimentacao(models.Model):
 
     def __str__(self):
         return f'{self.get_tipo_display()} de {self.quantidade} - {self.item}'
+
+# Implementação "Tecido"  - Realização da Prova. #
+
+class Tecido(models.Model):
+    """Agrupa Tecidos (ex.: exemplo)."""
+    nome = models.CharField(max_length=60)
+    # unique=True: cada tecido tem um prefixo próprio (D26). Ex.: OVR
+    prefixo = models.CharField(max_length=3, unique=True)
+
+    class Meta:
+        verbose_name = 'Tecido'
+        verbose_name_plural = 'Tecidos'
+
+    def __str__(self):
+        return self.nome
